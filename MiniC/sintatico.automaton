@@ -1,0 +1,2798 @@
+State 0:
+programa' -> . programa [ # ]
+-- On Include shift to state 1
+-- On programa shift to state 2
+-- On includes shift to state 3
+-- On TInt reduce production includes -> 
+-- On TFloat reduce production includes -> 
+-- On TChar reduce production includes -> 
+-- On TBool reduce production includes -> 
+-- On EOF reduce production includes -> 
+
+State 1:
+includes -> Include . [ TInt TFloat TChar TBool EOF ]
+-- On TInt reduce production includes -> Include 
+-- On TFloat reduce production includes -> Include 
+-- On TChar reduce production includes -> Include 
+-- On TBool reduce production includes -> Include 
+-- On EOF reduce production includes -> Include 
+
+State 2:
+programa' -> programa . [ # ]
+-- On # accept programa
+
+State 3:
+programa -> includes . funcoes EOF [ # ]
+-- On TInt shift to state 4
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On tipo shift to state 166
+-- On funcoes shift to state 177
+-- On funcao shift to state 179
+-- On EOF reduce production funcoes -> 
+
+State 4:
+funcao -> TInt . Main AParen argumentos FParen AChave comandos FChave [ TInt TFloat TChar TBool EOF ]
+tipo -> TInt . [ Ident ]
+-- On Main shift to state 5
+-- On Ident reduce production tipo -> TInt 
+
+State 5:
+funcao -> TInt Main . AParen argumentos FParen AChave comandos FChave [ TInt TFloat TChar TBool EOF ]
+-- On AParen shift to state 6
+
+State 6:
+funcao -> TInt Main AParen . argumentos FParen AChave comandos FChave [ TInt TFloat TChar TBool EOF ]
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On tipo shift to state 11
+-- On seq shift to state 13
+-- On argumentos shift to state 16
+-- On argumento shift to state 165
+-- On FParen reduce production argumentos -> 
+
+State 7:
+tipo -> TInt . [ Ident ]
+-- On Ident reduce production tipo -> TInt 
+
+State 8:
+tipo -> TFloat . [ Ident ]
+-- On Ident reduce production tipo -> TFloat 
+
+State 9:
+tipo -> TChar . [ Ident ]
+-- On Ident reduce production tipo -> TChar 
+
+State 10:
+tipo -> TBool . [ Ident ]
+-- On Ident reduce production tipo -> TBool 
+
+State 11:
+argumento -> tipo . Ident [ Virg FParen ]
+-- On Ident shift to state 12
+
+State 12:
+argumento -> tipo Ident . [ Virg FParen ]
+-- On Virg reduce production argumento -> tipo Ident 
+-- On FParen reduce production argumento -> tipo Ident 
+
+State 13:
+argumentos -> seq . [ FParen ]
+seq -> seq . Virg argumento [ Virg FParen ]
+-- On Virg shift to state 14
+-- On FParen reduce production argumentos -> seq 
+
+State 14:
+seq -> seq Virg . argumento [ Virg FParen ]
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On tipo shift to state 11
+-- On argumento shift to state 15
+
+State 15:
+seq -> seq Virg argumento . [ Virg FParen ]
+-- On Virg reduce production seq -> seq Virg argumento 
+-- On FParen reduce production seq -> seq Virg argumento 
+
+State 16:
+funcao -> TInt Main AParen argumentos . FParen AChave comandos FChave [ TInt TFloat TChar TBool EOF ]
+-- On FParen shift to state 17
+
+State 17:
+funcao -> TInt Main AParen argumentos FParen . AChave comandos FChave [ TInt TFloat TChar TBool EOF ]
+-- On AChave shift to state 18
+
+State 18:
+funcao -> TInt Main AParen argumentos FParen AChave . comandos FChave [ TInt TFloat TChar TBool EOF ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 163
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On FChave reduce production comandos -> 
+
+State 19:
+cmd_while -> While . AParen expressao FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AParen shift to state 20
+
+State 20:
+cmd_while -> While AParen . expressao FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 70
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 21:
+expr60 -> STRING . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr60 -> STRING 
+-- On Virg reduce production expr60 -> STRING 
+-- On TInt reduce production expr60 -> STRING 
+-- On TFloat reduce production expr60 -> STRING 
+-- On TChar reduce production expr60 -> STRING 
+-- On TBool reduce production expr60 -> STRING 
+-- On Switch reduce production expr60 -> STRING 
+-- On Scanf reduce production expr60 -> STRING 
+-- On Return reduce production expr60 -> STRING 
+-- On Printf reduce production expr60 -> STRING 
+-- On PTVirg reduce production expr60 -> STRING 
+-- On Or reduce production expr60 -> STRING 
+-- On OpSub reduce production expr60 -> STRING 
+-- On OpSoma reduce production expr60 -> STRING 
+-- On OpMul reduce production expr60 -> STRING 
+-- On OpDiv reduce production expr60 -> STRING 
+-- On MenorI reduce production expr60 -> STRING 
+-- On Menor reduce production expr60 -> STRING 
+-- On MaiorI reduce production expr60 -> STRING 
+-- On Maior reduce production expr60 -> STRING 
+-- On If reduce production expr60 -> STRING 
+-- On Ident reduce production expr60 -> STRING 
+-- On GetChar reduce production expr60 -> STRING 
+-- On For reduce production expr60 -> STRING 
+-- On FParen reduce production expr60 -> STRING 
+-- On FChave reduce production expr60 -> STRING 
+-- On DoisP reduce production expr60 -> STRING 
+-- On Dif reduce production expr60 -> STRING 
+-- On Comp reduce production expr60 -> STRING 
+-- On Break reduce production expr60 -> STRING 
+-- On Apost reduce production expr60 -> STRING 
+-- On And reduce production expr60 -> STRING 
+
+State 22:
+expr50 -> Not . expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 69
+-- On chama_func shift to state 37
+
+State 23:
+chama_func -> Ident . AParen args FParen [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr60 -> Ident . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On AParen shift to state 24
+-- On While reduce production expr60 -> Ident 
+-- On Virg reduce production expr60 -> Ident 
+-- On TInt reduce production expr60 -> Ident 
+-- On TFloat reduce production expr60 -> Ident 
+-- On TChar reduce production expr60 -> Ident 
+-- On TBool reduce production expr60 -> Ident 
+-- On Switch reduce production expr60 -> Ident 
+-- On Scanf reduce production expr60 -> Ident 
+-- On Return reduce production expr60 -> Ident 
+-- On Printf reduce production expr60 -> Ident 
+-- On PTVirg reduce production expr60 -> Ident 
+-- On Or reduce production expr60 -> Ident 
+-- On OpSub reduce production expr60 -> Ident 
+-- On OpSoma reduce production expr60 -> Ident 
+-- On OpMul reduce production expr60 -> Ident 
+-- On OpDiv reduce production expr60 -> Ident 
+-- On MenorI reduce production expr60 -> Ident 
+-- On Menor reduce production expr60 -> Ident 
+-- On MaiorI reduce production expr60 -> Ident 
+-- On Maior reduce production expr60 -> Ident 
+-- On If reduce production expr60 -> Ident 
+-- On Ident reduce production expr60 -> Ident 
+-- On GetChar reduce production expr60 -> Ident 
+-- On For reduce production expr60 -> Ident 
+-- On FParen reduce production expr60 -> Ident 
+-- On FChave reduce production expr60 -> Ident 
+-- On DoisP reduce production expr60 -> Ident 
+-- On Dif reduce production expr60 -> Ident 
+-- On Comp reduce production expr60 -> Ident 
+-- On Break reduce production expr60 -> Ident 
+-- On Apost reduce production expr60 -> Ident 
+-- On And reduce production expr60 -> Ident 
+
+State 24:
+chama_func -> Ident AParen . args FParen [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On seqs shift to state 63
+-- On expressao shift to state 66
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+-- On args shift to state 67
+-- On FParen reduce production args -> 
+
+State 25:
+expr60 -> INT . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr60 -> INT 
+-- On Virg reduce production expr60 -> INT 
+-- On TInt reduce production expr60 -> INT 
+-- On TFloat reduce production expr60 -> INT 
+-- On TChar reduce production expr60 -> INT 
+-- On TBool reduce production expr60 -> INT 
+-- On Switch reduce production expr60 -> INT 
+-- On Scanf reduce production expr60 -> INT 
+-- On Return reduce production expr60 -> INT 
+-- On Printf reduce production expr60 -> INT 
+-- On PTVirg reduce production expr60 -> INT 
+-- On Or reduce production expr60 -> INT 
+-- On OpSub reduce production expr60 -> INT 
+-- On OpSoma reduce production expr60 -> INT 
+-- On OpMul reduce production expr60 -> INT 
+-- On OpDiv reduce production expr60 -> INT 
+-- On MenorI reduce production expr60 -> INT 
+-- On Menor reduce production expr60 -> INT 
+-- On MaiorI reduce production expr60 -> INT 
+-- On Maior reduce production expr60 -> INT 
+-- On If reduce production expr60 -> INT 
+-- On Ident reduce production expr60 -> INT 
+-- On GetChar reduce production expr60 -> INT 
+-- On For reduce production expr60 -> INT 
+-- On FParen reduce production expr60 -> INT 
+-- On FChave reduce production expr60 -> INT 
+-- On DoisP reduce production expr60 -> INT 
+-- On Dif reduce production expr60 -> INT 
+-- On Comp reduce production expr60 -> INT 
+-- On Break reduce production expr60 -> INT 
+-- On Apost reduce production expr60 -> INT 
+-- On And reduce production expr60 -> INT 
+
+State 26:
+expr60 -> FLOAT . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr60 -> FLOAT 
+-- On Virg reduce production expr60 -> FLOAT 
+-- On TInt reduce production expr60 -> FLOAT 
+-- On TFloat reduce production expr60 -> FLOAT 
+-- On TChar reduce production expr60 -> FLOAT 
+-- On TBool reduce production expr60 -> FLOAT 
+-- On Switch reduce production expr60 -> FLOAT 
+-- On Scanf reduce production expr60 -> FLOAT 
+-- On Return reduce production expr60 -> FLOAT 
+-- On Printf reduce production expr60 -> FLOAT 
+-- On PTVirg reduce production expr60 -> FLOAT 
+-- On Or reduce production expr60 -> FLOAT 
+-- On OpSub reduce production expr60 -> FLOAT 
+-- On OpSoma reduce production expr60 -> FLOAT 
+-- On OpMul reduce production expr60 -> FLOAT 
+-- On OpDiv reduce production expr60 -> FLOAT 
+-- On MenorI reduce production expr60 -> FLOAT 
+-- On Menor reduce production expr60 -> FLOAT 
+-- On MaiorI reduce production expr60 -> FLOAT 
+-- On Maior reduce production expr60 -> FLOAT 
+-- On If reduce production expr60 -> FLOAT 
+-- On Ident reduce production expr60 -> FLOAT 
+-- On GetChar reduce production expr60 -> FLOAT 
+-- On For reduce production expr60 -> FLOAT 
+-- On FParen reduce production expr60 -> FLOAT 
+-- On FChave reduce production expr60 -> FLOAT 
+-- On DoisP reduce production expr60 -> FLOAT 
+-- On Dif reduce production expr60 -> FLOAT 
+-- On Comp reduce production expr60 -> FLOAT 
+-- On Break reduce production expr60 -> FLOAT 
+-- On Apost reduce production expr60 -> FLOAT 
+-- On And reduce production expr60 -> FLOAT 
+
+State 27:
+expr60 -> CHAR . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr60 -> CHAR 
+-- On Virg reduce production expr60 -> CHAR 
+-- On TInt reduce production expr60 -> CHAR 
+-- On TFloat reduce production expr60 -> CHAR 
+-- On TChar reduce production expr60 -> CHAR 
+-- On TBool reduce production expr60 -> CHAR 
+-- On Switch reduce production expr60 -> CHAR 
+-- On Scanf reduce production expr60 -> CHAR 
+-- On Return reduce production expr60 -> CHAR 
+-- On Printf reduce production expr60 -> CHAR 
+-- On PTVirg reduce production expr60 -> CHAR 
+-- On Or reduce production expr60 -> CHAR 
+-- On OpSub reduce production expr60 -> CHAR 
+-- On OpSoma reduce production expr60 -> CHAR 
+-- On OpMul reduce production expr60 -> CHAR 
+-- On OpDiv reduce production expr60 -> CHAR 
+-- On MenorI reduce production expr60 -> CHAR 
+-- On Menor reduce production expr60 -> CHAR 
+-- On MaiorI reduce production expr60 -> CHAR 
+-- On Maior reduce production expr60 -> CHAR 
+-- On If reduce production expr60 -> CHAR 
+-- On Ident reduce production expr60 -> CHAR 
+-- On GetChar reduce production expr60 -> CHAR 
+-- On For reduce production expr60 -> CHAR 
+-- On FParen reduce production expr60 -> CHAR 
+-- On FChave reduce production expr60 -> CHAR 
+-- On DoisP reduce production expr60 -> CHAR 
+-- On Dif reduce production expr60 -> CHAR 
+-- On Comp reduce production expr60 -> CHAR 
+-- On Break reduce production expr60 -> CHAR 
+-- On Apost reduce production expr60 -> CHAR 
+-- On And reduce production expr60 -> CHAR 
+
+State 28:
+expr60 -> BOOL . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr60 -> BOOL 
+-- On Virg reduce production expr60 -> BOOL 
+-- On TInt reduce production expr60 -> BOOL 
+-- On TFloat reduce production expr60 -> BOOL 
+-- On TChar reduce production expr60 -> BOOL 
+-- On TBool reduce production expr60 -> BOOL 
+-- On Switch reduce production expr60 -> BOOL 
+-- On Scanf reduce production expr60 -> BOOL 
+-- On Return reduce production expr60 -> BOOL 
+-- On Printf reduce production expr60 -> BOOL 
+-- On PTVirg reduce production expr60 -> BOOL 
+-- On Or reduce production expr60 -> BOOL 
+-- On OpSub reduce production expr60 -> BOOL 
+-- On OpSoma reduce production expr60 -> BOOL 
+-- On OpMul reduce production expr60 -> BOOL 
+-- On OpDiv reduce production expr60 -> BOOL 
+-- On MenorI reduce production expr60 -> BOOL 
+-- On Menor reduce production expr60 -> BOOL 
+-- On MaiorI reduce production expr60 -> BOOL 
+-- On Maior reduce production expr60 -> BOOL 
+-- On If reduce production expr60 -> BOOL 
+-- On Ident reduce production expr60 -> BOOL 
+-- On GetChar reduce production expr60 -> BOOL 
+-- On For reduce production expr60 -> BOOL 
+-- On FParen reduce production expr60 -> BOOL 
+-- On FChave reduce production expr60 -> BOOL 
+-- On DoisP reduce production expr60 -> BOOL 
+-- On Dif reduce production expr60 -> BOOL 
+-- On Comp reduce production expr60 -> BOOL 
+-- On Break reduce production expr60 -> BOOL 
+-- On Apost reduce production expr60 -> BOOL 
+-- On And reduce production expr60 -> BOOL 
+
+State 29:
+expr60 -> AParen . expressao FParen [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 30
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 30:
+expr60 -> AParen expressao . FParen [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expressao -> expressao . And expr10 [ Or FParen And ]
+expressao -> expressao . Or expr10 [ Or FParen And ]
+-- On Or shift to state 31
+-- On FParen shift to state 59
+-- On And shift to state 60
+
+State 31:
+expressao -> expressao Or . expr10 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 54
+-- On chama_func shift to state 37
+
+State 32:
+expr50 -> expr60 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr50 -> expr60 
+-- On Virg reduce production expr50 -> expr60 
+-- On TInt reduce production expr50 -> expr60 
+-- On TFloat reduce production expr50 -> expr60 
+-- On TChar reduce production expr50 -> expr60 
+-- On TBool reduce production expr50 -> expr60 
+-- On Switch reduce production expr50 -> expr60 
+-- On Scanf reduce production expr50 -> expr60 
+-- On Return reduce production expr50 -> expr60 
+-- On Printf reduce production expr50 -> expr60 
+-- On PTVirg reduce production expr50 -> expr60 
+-- On Or reduce production expr50 -> expr60 
+-- On OpSub reduce production expr50 -> expr60 
+-- On OpSoma reduce production expr50 -> expr60 
+-- On OpMul reduce production expr50 -> expr60 
+-- On OpDiv reduce production expr50 -> expr60 
+-- On MenorI reduce production expr50 -> expr60 
+-- On Menor reduce production expr50 -> expr60 
+-- On MaiorI reduce production expr50 -> expr60 
+-- On Maior reduce production expr50 -> expr60 
+-- On If reduce production expr50 -> expr60 
+-- On Ident reduce production expr50 -> expr60 
+-- On GetChar reduce production expr50 -> expr60 
+-- On For reduce production expr50 -> expr60 
+-- On FParen reduce production expr50 -> expr60 
+-- On FChave reduce production expr50 -> expr60 
+-- On DoisP reduce production expr50 -> expr60 
+-- On Dif reduce production expr50 -> expr60 
+-- On Comp reduce production expr50 -> expr60 
+-- On Break reduce production expr50 -> expr60 
+-- On Apost reduce production expr50 -> expr60 
+-- On And reduce production expr50 -> expr60 
+
+State 33:
+expr40 -> expr50 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr40 -> expr50 
+-- On Virg reduce production expr40 -> expr50 
+-- On TInt reduce production expr40 -> expr50 
+-- On TFloat reduce production expr40 -> expr50 
+-- On TChar reduce production expr40 -> expr50 
+-- On TBool reduce production expr40 -> expr50 
+-- On Switch reduce production expr40 -> expr50 
+-- On Scanf reduce production expr40 -> expr50 
+-- On Return reduce production expr40 -> expr50 
+-- On Printf reduce production expr40 -> expr50 
+-- On PTVirg reduce production expr40 -> expr50 
+-- On Or reduce production expr40 -> expr50 
+-- On OpSub reduce production expr40 -> expr50 
+-- On OpSoma reduce production expr40 -> expr50 
+-- On OpMul reduce production expr40 -> expr50 
+-- On OpDiv reduce production expr40 -> expr50 
+-- On MenorI reduce production expr40 -> expr50 
+-- On Menor reduce production expr40 -> expr50 
+-- On MaiorI reduce production expr40 -> expr50 
+-- On Maior reduce production expr40 -> expr50 
+-- On If reduce production expr40 -> expr50 
+-- On Ident reduce production expr40 -> expr50 
+-- On GetChar reduce production expr40 -> expr50 
+-- On For reduce production expr40 -> expr50 
+-- On FParen reduce production expr40 -> expr50 
+-- On FChave reduce production expr40 -> expr50 
+-- On DoisP reduce production expr40 -> expr50 
+-- On Dif reduce production expr40 -> expr50 
+-- On Comp reduce production expr40 -> expr50 
+-- On Break reduce production expr40 -> expr50 
+-- On Apost reduce production expr40 -> expr50 
+-- On And reduce production expr40 -> expr50 
+
+State 34:
+expr30 -> expr40 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr40 -> expr40 . OpMul expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr40 -> expr40 . OpDiv expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpMul shift to state 35
+-- On OpDiv shift to state 38
+-- On While reduce production expr30 -> expr40 
+-- On Virg reduce production expr30 -> expr40 
+-- On TInt reduce production expr30 -> expr40 
+-- On TFloat reduce production expr30 -> expr40 
+-- On TChar reduce production expr30 -> expr40 
+-- On TBool reduce production expr30 -> expr40 
+-- On Switch reduce production expr30 -> expr40 
+-- On Scanf reduce production expr30 -> expr40 
+-- On Return reduce production expr30 -> expr40 
+-- On Printf reduce production expr30 -> expr40 
+-- On PTVirg reduce production expr30 -> expr40 
+-- On Or reduce production expr30 -> expr40 
+-- On OpSub reduce production expr30 -> expr40 
+-- On OpSoma reduce production expr30 -> expr40 
+-- On MenorI reduce production expr30 -> expr40 
+-- On Menor reduce production expr30 -> expr40 
+-- On MaiorI reduce production expr30 -> expr40 
+-- On Maior reduce production expr30 -> expr40 
+-- On If reduce production expr30 -> expr40 
+-- On Ident reduce production expr30 -> expr40 
+-- On GetChar reduce production expr30 -> expr40 
+-- On For reduce production expr30 -> expr40 
+-- On FParen reduce production expr30 -> expr40 
+-- On FChave reduce production expr30 -> expr40 
+-- On DoisP reduce production expr30 -> expr40 
+-- On Dif reduce production expr30 -> expr40 
+-- On Comp reduce production expr30 -> expr40 
+-- On Break reduce production expr30 -> expr40 
+-- On Apost reduce production expr30 -> expr40 
+-- On And reduce production expr30 -> expr40 
+
+State 35:
+expr40 -> expr40 OpMul . expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 36
+-- On chama_func shift to state 37
+
+State 36:
+expr40 -> expr40 OpMul expr50 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr40 -> expr40 OpMul expr50 
+-- On Virg reduce production expr40 -> expr40 OpMul expr50 
+-- On TInt reduce production expr40 -> expr40 OpMul expr50 
+-- On TFloat reduce production expr40 -> expr40 OpMul expr50 
+-- On TChar reduce production expr40 -> expr40 OpMul expr50 
+-- On TBool reduce production expr40 -> expr40 OpMul expr50 
+-- On Switch reduce production expr40 -> expr40 OpMul expr50 
+-- On Scanf reduce production expr40 -> expr40 OpMul expr50 
+-- On Return reduce production expr40 -> expr40 OpMul expr50 
+-- On Printf reduce production expr40 -> expr40 OpMul expr50 
+-- On PTVirg reduce production expr40 -> expr40 OpMul expr50 
+-- On Or reduce production expr40 -> expr40 OpMul expr50 
+-- On OpSub reduce production expr40 -> expr40 OpMul expr50 
+-- On OpSoma reduce production expr40 -> expr40 OpMul expr50 
+-- On OpMul reduce production expr40 -> expr40 OpMul expr50 
+-- On OpDiv reduce production expr40 -> expr40 OpMul expr50 
+-- On MenorI reduce production expr40 -> expr40 OpMul expr50 
+-- On Menor reduce production expr40 -> expr40 OpMul expr50 
+-- On MaiorI reduce production expr40 -> expr40 OpMul expr50 
+-- On Maior reduce production expr40 -> expr40 OpMul expr50 
+-- On If reduce production expr40 -> expr40 OpMul expr50 
+-- On Ident reduce production expr40 -> expr40 OpMul expr50 
+-- On GetChar reduce production expr40 -> expr40 OpMul expr50 
+-- On For reduce production expr40 -> expr40 OpMul expr50 
+-- On FParen reduce production expr40 -> expr40 OpMul expr50 
+-- On FChave reduce production expr40 -> expr40 OpMul expr50 
+-- On DoisP reduce production expr40 -> expr40 OpMul expr50 
+-- On Dif reduce production expr40 -> expr40 OpMul expr50 
+-- On Comp reduce production expr40 -> expr40 OpMul expr50 
+-- On Break reduce production expr40 -> expr40 OpMul expr50 
+-- On Apost reduce production expr40 -> expr40 OpMul expr50 
+-- On And reduce production expr40 -> expr40 OpMul expr50 
+
+State 37:
+expr60 -> chama_func . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr60 -> chama_func 
+-- On Virg reduce production expr60 -> chama_func 
+-- On TInt reduce production expr60 -> chama_func 
+-- On TFloat reduce production expr60 -> chama_func 
+-- On TChar reduce production expr60 -> chama_func 
+-- On TBool reduce production expr60 -> chama_func 
+-- On Switch reduce production expr60 -> chama_func 
+-- On Scanf reduce production expr60 -> chama_func 
+-- On Return reduce production expr60 -> chama_func 
+-- On Printf reduce production expr60 -> chama_func 
+-- On PTVirg reduce production expr60 -> chama_func 
+-- On Or reduce production expr60 -> chama_func 
+-- On OpSub reduce production expr60 -> chama_func 
+-- On OpSoma reduce production expr60 -> chama_func 
+-- On OpMul reduce production expr60 -> chama_func 
+-- On OpDiv reduce production expr60 -> chama_func 
+-- On MenorI reduce production expr60 -> chama_func 
+-- On Menor reduce production expr60 -> chama_func 
+-- On MaiorI reduce production expr60 -> chama_func 
+-- On Maior reduce production expr60 -> chama_func 
+-- On If reduce production expr60 -> chama_func 
+-- On Ident reduce production expr60 -> chama_func 
+-- On GetChar reduce production expr60 -> chama_func 
+-- On For reduce production expr60 -> chama_func 
+-- On FParen reduce production expr60 -> chama_func 
+-- On FChave reduce production expr60 -> chama_func 
+-- On DoisP reduce production expr60 -> chama_func 
+-- On Dif reduce production expr60 -> chama_func 
+-- On Comp reduce production expr60 -> chama_func 
+-- On Break reduce production expr60 -> chama_func 
+-- On Apost reduce production expr60 -> chama_func 
+-- On And reduce production expr60 -> chama_func 
+
+State 38:
+expr40 -> expr40 OpDiv . expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 39
+-- On chama_func shift to state 37
+
+State 39:
+expr40 -> expr40 OpDiv expr50 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr40 -> expr40 OpDiv expr50 
+-- On Virg reduce production expr40 -> expr40 OpDiv expr50 
+-- On TInt reduce production expr40 -> expr40 OpDiv expr50 
+-- On TFloat reduce production expr40 -> expr40 OpDiv expr50 
+-- On TChar reduce production expr40 -> expr40 OpDiv expr50 
+-- On TBool reduce production expr40 -> expr40 OpDiv expr50 
+-- On Switch reduce production expr40 -> expr40 OpDiv expr50 
+-- On Scanf reduce production expr40 -> expr40 OpDiv expr50 
+-- On Return reduce production expr40 -> expr40 OpDiv expr50 
+-- On Printf reduce production expr40 -> expr40 OpDiv expr50 
+-- On PTVirg reduce production expr40 -> expr40 OpDiv expr50 
+-- On Or reduce production expr40 -> expr40 OpDiv expr50 
+-- On OpSub reduce production expr40 -> expr40 OpDiv expr50 
+-- On OpSoma reduce production expr40 -> expr40 OpDiv expr50 
+-- On OpMul reduce production expr40 -> expr40 OpDiv expr50 
+-- On OpDiv reduce production expr40 -> expr40 OpDiv expr50 
+-- On MenorI reduce production expr40 -> expr40 OpDiv expr50 
+-- On Menor reduce production expr40 -> expr40 OpDiv expr50 
+-- On MaiorI reduce production expr40 -> expr40 OpDiv expr50 
+-- On Maior reduce production expr40 -> expr40 OpDiv expr50 
+-- On If reduce production expr40 -> expr40 OpDiv expr50 
+-- On Ident reduce production expr40 -> expr40 OpDiv expr50 
+-- On GetChar reduce production expr40 -> expr40 OpDiv expr50 
+-- On For reduce production expr40 -> expr40 OpDiv expr50 
+-- On FParen reduce production expr40 -> expr40 OpDiv expr50 
+-- On FChave reduce production expr40 -> expr40 OpDiv expr50 
+-- On DoisP reduce production expr40 -> expr40 OpDiv expr50 
+-- On Dif reduce production expr40 -> expr40 OpDiv expr50 
+-- On Comp reduce production expr40 -> expr40 OpDiv expr50 
+-- On Break reduce production expr40 -> expr40 OpDiv expr50 
+-- On Apost reduce production expr40 -> expr40 OpDiv expr50 
+-- On And reduce production expr40 -> expr40 OpDiv expr50 
+
+State 40:
+expr20 -> expr30 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSoma expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSub expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpSub shift to state 41
+-- On OpSoma shift to state 43
+-- On While reduce production expr20 -> expr30 
+-- On Virg reduce production expr20 -> expr30 
+-- On TInt reduce production expr20 -> expr30 
+-- On TFloat reduce production expr20 -> expr30 
+-- On TChar reduce production expr20 -> expr30 
+-- On TBool reduce production expr20 -> expr30 
+-- On Switch reduce production expr20 -> expr30 
+-- On Scanf reduce production expr20 -> expr30 
+-- On Return reduce production expr20 -> expr30 
+-- On Printf reduce production expr20 -> expr30 
+-- On PTVirg reduce production expr20 -> expr30 
+-- On Or reduce production expr20 -> expr30 
+-- On MenorI reduce production expr20 -> expr30 
+-- On Menor reduce production expr20 -> expr30 
+-- On MaiorI reduce production expr20 -> expr30 
+-- On Maior reduce production expr20 -> expr30 
+-- On If reduce production expr20 -> expr30 
+-- On Ident reduce production expr20 -> expr30 
+-- On GetChar reduce production expr20 -> expr30 
+-- On For reduce production expr20 -> expr30 
+-- On FParen reduce production expr20 -> expr30 
+-- On FChave reduce production expr20 -> expr30 
+-- On DoisP reduce production expr20 -> expr30 
+-- On Dif reduce production expr20 -> expr30 
+-- On Comp reduce production expr20 -> expr30 
+-- On Break reduce production expr20 -> expr30 
+-- On Apost reduce production expr20 -> expr30 
+-- On And reduce production expr20 -> expr30 
+
+State 41:
+expr30 -> expr30 OpSub . expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 42
+-- On chama_func shift to state 37
+
+State 42:
+expr30 -> expr30 OpSub expr40 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr40 -> expr40 . OpMul expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr40 -> expr40 . OpDiv expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpMul shift to state 35
+-- On OpDiv shift to state 38
+-- On While reduce production expr30 -> expr30 OpSub expr40 
+-- On Virg reduce production expr30 -> expr30 OpSub expr40 
+-- On TInt reduce production expr30 -> expr30 OpSub expr40 
+-- On TFloat reduce production expr30 -> expr30 OpSub expr40 
+-- On TChar reduce production expr30 -> expr30 OpSub expr40 
+-- On TBool reduce production expr30 -> expr30 OpSub expr40 
+-- On Switch reduce production expr30 -> expr30 OpSub expr40 
+-- On Scanf reduce production expr30 -> expr30 OpSub expr40 
+-- On Return reduce production expr30 -> expr30 OpSub expr40 
+-- On Printf reduce production expr30 -> expr30 OpSub expr40 
+-- On PTVirg reduce production expr30 -> expr30 OpSub expr40 
+-- On Or reduce production expr30 -> expr30 OpSub expr40 
+-- On OpSub reduce production expr30 -> expr30 OpSub expr40 
+-- On OpSoma reduce production expr30 -> expr30 OpSub expr40 
+-- On MenorI reduce production expr30 -> expr30 OpSub expr40 
+-- On Menor reduce production expr30 -> expr30 OpSub expr40 
+-- On MaiorI reduce production expr30 -> expr30 OpSub expr40 
+-- On Maior reduce production expr30 -> expr30 OpSub expr40 
+-- On If reduce production expr30 -> expr30 OpSub expr40 
+-- On Ident reduce production expr30 -> expr30 OpSub expr40 
+-- On GetChar reduce production expr30 -> expr30 OpSub expr40 
+-- On For reduce production expr30 -> expr30 OpSub expr40 
+-- On FParen reduce production expr30 -> expr30 OpSub expr40 
+-- On FChave reduce production expr30 -> expr30 OpSub expr40 
+-- On DoisP reduce production expr30 -> expr30 OpSub expr40 
+-- On Dif reduce production expr30 -> expr30 OpSub expr40 
+-- On Comp reduce production expr30 -> expr30 OpSub expr40 
+-- On Break reduce production expr30 -> expr30 OpSub expr40 
+-- On Apost reduce production expr30 -> expr30 OpSub expr40 
+-- On And reduce production expr30 -> expr30 OpSub expr40 
+
+State 43:
+expr30 -> expr30 OpSoma . expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 44
+-- On chama_func shift to state 37
+
+State 44:
+expr30 -> expr30 OpSoma expr40 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr40 -> expr40 . OpMul expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr40 -> expr40 . OpDiv expr50 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpMul shift to state 35
+-- On OpDiv shift to state 38
+-- On While reduce production expr30 -> expr30 OpSoma expr40 
+-- On Virg reduce production expr30 -> expr30 OpSoma expr40 
+-- On TInt reduce production expr30 -> expr30 OpSoma expr40 
+-- On TFloat reduce production expr30 -> expr30 OpSoma expr40 
+-- On TChar reduce production expr30 -> expr30 OpSoma expr40 
+-- On TBool reduce production expr30 -> expr30 OpSoma expr40 
+-- On Switch reduce production expr30 -> expr30 OpSoma expr40 
+-- On Scanf reduce production expr30 -> expr30 OpSoma expr40 
+-- On Return reduce production expr30 -> expr30 OpSoma expr40 
+-- On Printf reduce production expr30 -> expr30 OpSoma expr40 
+-- On PTVirg reduce production expr30 -> expr30 OpSoma expr40 
+-- On Or reduce production expr30 -> expr30 OpSoma expr40 
+-- On OpSub reduce production expr30 -> expr30 OpSoma expr40 
+-- On OpSoma reduce production expr30 -> expr30 OpSoma expr40 
+-- On MenorI reduce production expr30 -> expr30 OpSoma expr40 
+-- On Menor reduce production expr30 -> expr30 OpSoma expr40 
+-- On MaiorI reduce production expr30 -> expr30 OpSoma expr40 
+-- On Maior reduce production expr30 -> expr30 OpSoma expr40 
+-- On If reduce production expr30 -> expr30 OpSoma expr40 
+-- On Ident reduce production expr30 -> expr30 OpSoma expr40 
+-- On GetChar reduce production expr30 -> expr30 OpSoma expr40 
+-- On For reduce production expr30 -> expr30 OpSoma expr40 
+-- On FParen reduce production expr30 -> expr30 OpSoma expr40 
+-- On FChave reduce production expr30 -> expr30 OpSoma expr40 
+-- On DoisP reduce production expr30 -> expr30 OpSoma expr40 
+-- On Dif reduce production expr30 -> expr30 OpSoma expr40 
+-- On Comp reduce production expr30 -> expr30 OpSoma expr40 
+-- On Break reduce production expr30 -> expr30 OpSoma expr40 
+-- On Apost reduce production expr30 -> expr30 OpSoma expr40 
+-- On And reduce production expr30 -> expr30 OpSoma expr40 
+
+State 45:
+expr10 -> expr20 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . Maior expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . Menor expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . MaiorI expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . MenorI expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On MenorI shift to state 46
+-- On Menor shift to state 48
+-- On MaiorI shift to state 50
+-- On Maior shift to state 52
+-- On While reduce production expr10 -> expr20 
+-- On Virg reduce production expr10 -> expr20 
+-- On TInt reduce production expr10 -> expr20 
+-- On TFloat reduce production expr10 -> expr20 
+-- On TChar reduce production expr10 -> expr20 
+-- On TBool reduce production expr10 -> expr20 
+-- On Switch reduce production expr10 -> expr20 
+-- On Scanf reduce production expr10 -> expr20 
+-- On Return reduce production expr10 -> expr20 
+-- On Printf reduce production expr10 -> expr20 
+-- On PTVirg reduce production expr10 -> expr20 
+-- On Or reduce production expr10 -> expr20 
+-- On If reduce production expr10 -> expr20 
+-- On Ident reduce production expr10 -> expr20 
+-- On GetChar reduce production expr10 -> expr20 
+-- On For reduce production expr10 -> expr20 
+-- On FParen reduce production expr10 -> expr20 
+-- On FChave reduce production expr10 -> expr20 
+-- On DoisP reduce production expr10 -> expr20 
+-- On Dif reduce production expr10 -> expr20 
+-- On Comp reduce production expr10 -> expr20 
+-- On Break reduce production expr10 -> expr20 
+-- On Apost reduce production expr10 -> expr20 
+-- On And reduce production expr10 -> expr20 
+
+State 46:
+expr20 -> expr20 MenorI . expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 47
+-- On chama_func shift to state 37
+
+State 47:
+expr20 -> expr20 MenorI expr30 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSoma expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSub expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpSub shift to state 41
+-- On OpSoma shift to state 43
+-- On While reduce production expr20 -> expr20 MenorI expr30 
+-- On Virg reduce production expr20 -> expr20 MenorI expr30 
+-- On TInt reduce production expr20 -> expr20 MenorI expr30 
+-- On TFloat reduce production expr20 -> expr20 MenorI expr30 
+-- On TChar reduce production expr20 -> expr20 MenorI expr30 
+-- On TBool reduce production expr20 -> expr20 MenorI expr30 
+-- On Switch reduce production expr20 -> expr20 MenorI expr30 
+-- On Scanf reduce production expr20 -> expr20 MenorI expr30 
+-- On Return reduce production expr20 -> expr20 MenorI expr30 
+-- On Printf reduce production expr20 -> expr20 MenorI expr30 
+-- On PTVirg reduce production expr20 -> expr20 MenorI expr30 
+-- On Or reduce production expr20 -> expr20 MenorI expr30 
+-- On MenorI reduce production expr20 -> expr20 MenorI expr30 
+-- On Menor reduce production expr20 -> expr20 MenorI expr30 
+-- On MaiorI reduce production expr20 -> expr20 MenorI expr30 
+-- On Maior reduce production expr20 -> expr20 MenorI expr30 
+-- On If reduce production expr20 -> expr20 MenorI expr30 
+-- On Ident reduce production expr20 -> expr20 MenorI expr30 
+-- On GetChar reduce production expr20 -> expr20 MenorI expr30 
+-- On For reduce production expr20 -> expr20 MenorI expr30 
+-- On FParen reduce production expr20 -> expr20 MenorI expr30 
+-- On FChave reduce production expr20 -> expr20 MenorI expr30 
+-- On DoisP reduce production expr20 -> expr20 MenorI expr30 
+-- On Dif reduce production expr20 -> expr20 MenorI expr30 
+-- On Comp reduce production expr20 -> expr20 MenorI expr30 
+-- On Break reduce production expr20 -> expr20 MenorI expr30 
+-- On Apost reduce production expr20 -> expr20 MenorI expr30 
+-- On And reduce production expr20 -> expr20 MenorI expr30 
+
+State 48:
+expr20 -> expr20 Menor . expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 49
+-- On chama_func shift to state 37
+
+State 49:
+expr20 -> expr20 Menor expr30 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSoma expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSub expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpSub shift to state 41
+-- On OpSoma shift to state 43
+-- On While reduce production expr20 -> expr20 Menor expr30 
+-- On Virg reduce production expr20 -> expr20 Menor expr30 
+-- On TInt reduce production expr20 -> expr20 Menor expr30 
+-- On TFloat reduce production expr20 -> expr20 Menor expr30 
+-- On TChar reduce production expr20 -> expr20 Menor expr30 
+-- On TBool reduce production expr20 -> expr20 Menor expr30 
+-- On Switch reduce production expr20 -> expr20 Menor expr30 
+-- On Scanf reduce production expr20 -> expr20 Menor expr30 
+-- On Return reduce production expr20 -> expr20 Menor expr30 
+-- On Printf reduce production expr20 -> expr20 Menor expr30 
+-- On PTVirg reduce production expr20 -> expr20 Menor expr30 
+-- On Or reduce production expr20 -> expr20 Menor expr30 
+-- On MenorI reduce production expr20 -> expr20 Menor expr30 
+-- On Menor reduce production expr20 -> expr20 Menor expr30 
+-- On MaiorI reduce production expr20 -> expr20 Menor expr30 
+-- On Maior reduce production expr20 -> expr20 Menor expr30 
+-- On If reduce production expr20 -> expr20 Menor expr30 
+-- On Ident reduce production expr20 -> expr20 Menor expr30 
+-- On GetChar reduce production expr20 -> expr20 Menor expr30 
+-- On For reduce production expr20 -> expr20 Menor expr30 
+-- On FParen reduce production expr20 -> expr20 Menor expr30 
+-- On FChave reduce production expr20 -> expr20 Menor expr30 
+-- On DoisP reduce production expr20 -> expr20 Menor expr30 
+-- On Dif reduce production expr20 -> expr20 Menor expr30 
+-- On Comp reduce production expr20 -> expr20 Menor expr30 
+-- On Break reduce production expr20 -> expr20 Menor expr30 
+-- On Apost reduce production expr20 -> expr20 Menor expr30 
+-- On And reduce production expr20 -> expr20 Menor expr30 
+
+State 50:
+expr20 -> expr20 MaiorI . expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 51
+-- On chama_func shift to state 37
+
+State 51:
+expr20 -> expr20 MaiorI expr30 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSoma expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSub expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpSub shift to state 41
+-- On OpSoma shift to state 43
+-- On While reduce production expr20 -> expr20 MaiorI expr30 
+-- On Virg reduce production expr20 -> expr20 MaiorI expr30 
+-- On TInt reduce production expr20 -> expr20 MaiorI expr30 
+-- On TFloat reduce production expr20 -> expr20 MaiorI expr30 
+-- On TChar reduce production expr20 -> expr20 MaiorI expr30 
+-- On TBool reduce production expr20 -> expr20 MaiorI expr30 
+-- On Switch reduce production expr20 -> expr20 MaiorI expr30 
+-- On Scanf reduce production expr20 -> expr20 MaiorI expr30 
+-- On Return reduce production expr20 -> expr20 MaiorI expr30 
+-- On Printf reduce production expr20 -> expr20 MaiorI expr30 
+-- On PTVirg reduce production expr20 -> expr20 MaiorI expr30 
+-- On Or reduce production expr20 -> expr20 MaiorI expr30 
+-- On MenorI reduce production expr20 -> expr20 MaiorI expr30 
+-- On Menor reduce production expr20 -> expr20 MaiorI expr30 
+-- On MaiorI reduce production expr20 -> expr20 MaiorI expr30 
+-- On Maior reduce production expr20 -> expr20 MaiorI expr30 
+-- On If reduce production expr20 -> expr20 MaiorI expr30 
+-- On Ident reduce production expr20 -> expr20 MaiorI expr30 
+-- On GetChar reduce production expr20 -> expr20 MaiorI expr30 
+-- On For reduce production expr20 -> expr20 MaiorI expr30 
+-- On FParen reduce production expr20 -> expr20 MaiorI expr30 
+-- On FChave reduce production expr20 -> expr20 MaiorI expr30 
+-- On DoisP reduce production expr20 -> expr20 MaiorI expr30 
+-- On Dif reduce production expr20 -> expr20 MaiorI expr30 
+-- On Comp reduce production expr20 -> expr20 MaiorI expr30 
+-- On Break reduce production expr20 -> expr20 MaiorI expr30 
+-- On Apost reduce production expr20 -> expr20 MaiorI expr30 
+-- On And reduce production expr20 -> expr20 MaiorI expr30 
+
+State 52:
+expr20 -> expr20 Maior . expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 53
+-- On chama_func shift to state 37
+
+State 53:
+expr20 -> expr20 Maior expr30 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSoma expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr30 -> expr30 . OpSub expr40 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On OpSub shift to state 41
+-- On OpSoma shift to state 43
+-- On While reduce production expr20 -> expr20 Maior expr30 
+-- On Virg reduce production expr20 -> expr20 Maior expr30 
+-- On TInt reduce production expr20 -> expr20 Maior expr30 
+-- On TFloat reduce production expr20 -> expr20 Maior expr30 
+-- On TChar reduce production expr20 -> expr20 Maior expr30 
+-- On TBool reduce production expr20 -> expr20 Maior expr30 
+-- On Switch reduce production expr20 -> expr20 Maior expr30 
+-- On Scanf reduce production expr20 -> expr20 Maior expr30 
+-- On Return reduce production expr20 -> expr20 Maior expr30 
+-- On Printf reduce production expr20 -> expr20 Maior expr30 
+-- On PTVirg reduce production expr20 -> expr20 Maior expr30 
+-- On Or reduce production expr20 -> expr20 Maior expr30 
+-- On MenorI reduce production expr20 -> expr20 Maior expr30 
+-- On Menor reduce production expr20 -> expr20 Maior expr30 
+-- On MaiorI reduce production expr20 -> expr20 Maior expr30 
+-- On Maior reduce production expr20 -> expr20 Maior expr30 
+-- On If reduce production expr20 -> expr20 Maior expr30 
+-- On Ident reduce production expr20 -> expr20 Maior expr30 
+-- On GetChar reduce production expr20 -> expr20 Maior expr30 
+-- On For reduce production expr20 -> expr20 Maior expr30 
+-- On FParen reduce production expr20 -> expr20 Maior expr30 
+-- On FChave reduce production expr20 -> expr20 Maior expr30 
+-- On DoisP reduce production expr20 -> expr20 Maior expr30 
+-- On Dif reduce production expr20 -> expr20 Maior expr30 
+-- On Comp reduce production expr20 -> expr20 Maior expr30 
+-- On Break reduce production expr20 -> expr20 Maior expr30 
+-- On Apost reduce production expr20 -> expr20 Maior expr30 
+-- On And reduce production expr20 -> expr20 Maior expr30 
+
+State 54:
+expr10 -> expr10 . Comp expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr10 -> expr10 . Dif expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expressao -> expressao Or expr10 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Break Apost And ]
+-- On Dif shift to state 55
+-- On Comp shift to state 57
+-- On While reduce production expressao -> expressao Or expr10 
+-- On Virg reduce production expressao -> expressao Or expr10 
+-- On TInt reduce production expressao -> expressao Or expr10 
+-- On TFloat reduce production expressao -> expressao Or expr10 
+-- On TChar reduce production expressao -> expressao Or expr10 
+-- On TBool reduce production expressao -> expressao Or expr10 
+-- On Switch reduce production expressao -> expressao Or expr10 
+-- On Scanf reduce production expressao -> expressao Or expr10 
+-- On Return reduce production expressao -> expressao Or expr10 
+-- On Printf reduce production expressao -> expressao Or expr10 
+-- On PTVirg reduce production expressao -> expressao Or expr10 
+-- On Or reduce production expressao -> expressao Or expr10 
+-- On If reduce production expressao -> expressao Or expr10 
+-- On Ident reduce production expressao -> expressao Or expr10 
+-- On GetChar reduce production expressao -> expressao Or expr10 
+-- On For reduce production expressao -> expressao Or expr10 
+-- On FParen reduce production expressao -> expressao Or expr10 
+-- On FChave reduce production expressao -> expressao Or expr10 
+-- On DoisP reduce production expressao -> expressao Or expr10 
+-- On Break reduce production expressao -> expressao Or expr10 
+-- On Apost reduce production expressao -> expressao Or expr10 
+-- On And reduce production expressao -> expressao Or expr10 
+
+State 55:
+expr10 -> expr10 Dif . expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 56
+-- On chama_func shift to state 37
+
+State 56:
+expr10 -> expr10 Dif expr20 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . Maior expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . Menor expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . MaiorI expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . MenorI expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On MenorI shift to state 46
+-- On Menor shift to state 48
+-- On MaiorI shift to state 50
+-- On Maior shift to state 52
+-- On While reduce production expr10 -> expr10 Dif expr20 
+-- On Virg reduce production expr10 -> expr10 Dif expr20 
+-- On TInt reduce production expr10 -> expr10 Dif expr20 
+-- On TFloat reduce production expr10 -> expr10 Dif expr20 
+-- On TChar reduce production expr10 -> expr10 Dif expr20 
+-- On TBool reduce production expr10 -> expr10 Dif expr20 
+-- On Switch reduce production expr10 -> expr10 Dif expr20 
+-- On Scanf reduce production expr10 -> expr10 Dif expr20 
+-- On Return reduce production expr10 -> expr10 Dif expr20 
+-- On Printf reduce production expr10 -> expr10 Dif expr20 
+-- On PTVirg reduce production expr10 -> expr10 Dif expr20 
+-- On Or reduce production expr10 -> expr10 Dif expr20 
+-- On If reduce production expr10 -> expr10 Dif expr20 
+-- On Ident reduce production expr10 -> expr10 Dif expr20 
+-- On GetChar reduce production expr10 -> expr10 Dif expr20 
+-- On For reduce production expr10 -> expr10 Dif expr20 
+-- On FParen reduce production expr10 -> expr10 Dif expr20 
+-- On FChave reduce production expr10 -> expr10 Dif expr20 
+-- On DoisP reduce production expr10 -> expr10 Dif expr20 
+-- On Dif reduce production expr10 -> expr10 Dif expr20 
+-- On Comp reduce production expr10 -> expr10 Dif expr20 
+-- On Break reduce production expr10 -> expr10 Dif expr20 
+-- On Apost reduce production expr10 -> expr10 Dif expr20 
+-- On And reduce production expr10 -> expr10 Dif expr20 
+
+State 57:
+expr10 -> expr10 Comp . expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 58
+-- On chama_func shift to state 37
+
+State 58:
+expr10 -> expr10 Comp expr20 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . Maior expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . Menor expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . MaiorI expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr20 -> expr20 . MenorI expr30 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On MenorI shift to state 46
+-- On Menor shift to state 48
+-- On MaiorI shift to state 50
+-- On Maior shift to state 52
+-- On While reduce production expr10 -> expr10 Comp expr20 
+-- On Virg reduce production expr10 -> expr10 Comp expr20 
+-- On TInt reduce production expr10 -> expr10 Comp expr20 
+-- On TFloat reduce production expr10 -> expr10 Comp expr20 
+-- On TChar reduce production expr10 -> expr10 Comp expr20 
+-- On TBool reduce production expr10 -> expr10 Comp expr20 
+-- On Switch reduce production expr10 -> expr10 Comp expr20 
+-- On Scanf reduce production expr10 -> expr10 Comp expr20 
+-- On Return reduce production expr10 -> expr10 Comp expr20 
+-- On Printf reduce production expr10 -> expr10 Comp expr20 
+-- On PTVirg reduce production expr10 -> expr10 Comp expr20 
+-- On Or reduce production expr10 -> expr10 Comp expr20 
+-- On If reduce production expr10 -> expr10 Comp expr20 
+-- On Ident reduce production expr10 -> expr10 Comp expr20 
+-- On GetChar reduce production expr10 -> expr10 Comp expr20 
+-- On For reduce production expr10 -> expr10 Comp expr20 
+-- On FParen reduce production expr10 -> expr10 Comp expr20 
+-- On FChave reduce production expr10 -> expr10 Comp expr20 
+-- On DoisP reduce production expr10 -> expr10 Comp expr20 
+-- On Dif reduce production expr10 -> expr10 Comp expr20 
+-- On Comp reduce production expr10 -> expr10 Comp expr20 
+-- On Break reduce production expr10 -> expr10 Comp expr20 
+-- On Apost reduce production expr10 -> expr10 Comp expr20 
+-- On And reduce production expr10 -> expr10 Comp expr20 
+
+State 59:
+expr60 -> AParen expressao FParen . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr60 -> AParen expressao FParen 
+-- On Virg reduce production expr60 -> AParen expressao FParen 
+-- On TInt reduce production expr60 -> AParen expressao FParen 
+-- On TFloat reduce production expr60 -> AParen expressao FParen 
+-- On TChar reduce production expr60 -> AParen expressao FParen 
+-- On TBool reduce production expr60 -> AParen expressao FParen 
+-- On Switch reduce production expr60 -> AParen expressao FParen 
+-- On Scanf reduce production expr60 -> AParen expressao FParen 
+-- On Return reduce production expr60 -> AParen expressao FParen 
+-- On Printf reduce production expr60 -> AParen expressao FParen 
+-- On PTVirg reduce production expr60 -> AParen expressao FParen 
+-- On Or reduce production expr60 -> AParen expressao FParen 
+-- On OpSub reduce production expr60 -> AParen expressao FParen 
+-- On OpSoma reduce production expr60 -> AParen expressao FParen 
+-- On OpMul reduce production expr60 -> AParen expressao FParen 
+-- On OpDiv reduce production expr60 -> AParen expressao FParen 
+-- On MenorI reduce production expr60 -> AParen expressao FParen 
+-- On Menor reduce production expr60 -> AParen expressao FParen 
+-- On MaiorI reduce production expr60 -> AParen expressao FParen 
+-- On Maior reduce production expr60 -> AParen expressao FParen 
+-- On If reduce production expr60 -> AParen expressao FParen 
+-- On Ident reduce production expr60 -> AParen expressao FParen 
+-- On GetChar reduce production expr60 -> AParen expressao FParen 
+-- On For reduce production expr60 -> AParen expressao FParen 
+-- On FParen reduce production expr60 -> AParen expressao FParen 
+-- On FChave reduce production expr60 -> AParen expressao FParen 
+-- On DoisP reduce production expr60 -> AParen expressao FParen 
+-- On Dif reduce production expr60 -> AParen expressao FParen 
+-- On Comp reduce production expr60 -> AParen expressao FParen 
+-- On Break reduce production expr60 -> AParen expressao FParen 
+-- On Apost reduce production expr60 -> AParen expressao FParen 
+-- On And reduce production expr60 -> AParen expressao FParen 
+
+State 60:
+expressao -> expressao And . expr10 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Break Apost And ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 61
+-- On chama_func shift to state 37
+
+State 61:
+expr10 -> expr10 . Comp expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr10 -> expr10 . Dif expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expressao -> expressao And expr10 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Break Apost And ]
+-- On Dif shift to state 55
+-- On Comp shift to state 57
+-- On While reduce production expressao -> expressao And expr10 
+-- On Virg reduce production expressao -> expressao And expr10 
+-- On TInt reduce production expressao -> expressao And expr10 
+-- On TFloat reduce production expressao -> expressao And expr10 
+-- On TChar reduce production expressao -> expressao And expr10 
+-- On TBool reduce production expressao -> expressao And expr10 
+-- On Switch reduce production expressao -> expressao And expr10 
+-- On Scanf reduce production expressao -> expressao And expr10 
+-- On Return reduce production expressao -> expressao And expr10 
+-- On Printf reduce production expressao -> expressao And expr10 
+-- On PTVirg reduce production expressao -> expressao And expr10 
+-- On Or reduce production expressao -> expressao And expr10 
+-- On If reduce production expressao -> expressao And expr10 
+-- On Ident reduce production expressao -> expressao And expr10 
+-- On GetChar reduce production expressao -> expressao And expr10 
+-- On For reduce production expressao -> expressao And expr10 
+-- On FParen reduce production expressao -> expressao And expr10 
+-- On FChave reduce production expressao -> expressao And expr10 
+-- On DoisP reduce production expressao -> expressao And expr10 
+-- On Break reduce production expressao -> expressao And expr10 
+-- On Apost reduce production expressao -> expressao And expr10 
+-- On And reduce production expressao -> expressao And expr10 
+
+State 62:
+expr10 -> expr10 . Comp expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expr10 -> expr10 . Dif expr20 [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+expressao -> expr10 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave DoisP Break Apost And ]
+-- On Dif shift to state 55
+-- On Comp shift to state 57
+-- On While reduce production expressao -> expr10 
+-- On Virg reduce production expressao -> expr10 
+-- On TInt reduce production expressao -> expr10 
+-- On TFloat reduce production expressao -> expr10 
+-- On TChar reduce production expressao -> expr10 
+-- On TBool reduce production expressao -> expr10 
+-- On Switch reduce production expressao -> expr10 
+-- On Scanf reduce production expressao -> expr10 
+-- On Return reduce production expressao -> expr10 
+-- On Printf reduce production expressao -> expr10 
+-- On PTVirg reduce production expressao -> expr10 
+-- On Or reduce production expressao -> expr10 
+-- On If reduce production expressao -> expr10 
+-- On Ident reduce production expressao -> expr10 
+-- On GetChar reduce production expressao -> expr10 
+-- On For reduce production expressao -> expr10 
+-- On FParen reduce production expressao -> expr10 
+-- On FChave reduce production expressao -> expr10 
+-- On DoisP reduce production expressao -> expr10 
+-- On Break reduce production expressao -> expr10 
+-- On Apost reduce production expressao -> expr10 
+-- On And reduce production expressao -> expr10 
+
+State 63:
+args -> seqs . [ FParen ]
+seqs -> seqs . Virg expressao [ Virg FParen ]
+-- On Virg shift to state 64
+-- On FParen reduce production args -> seqs 
+
+State 64:
+seqs -> seqs Virg . expressao [ Virg FParen ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 65
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 65:
+expressao -> expressao . And expr10 [ Virg Or FParen And ]
+expressao -> expressao . Or expr10 [ Virg Or FParen And ]
+seqs -> seqs Virg expressao . [ Virg FParen ]
+-- On Or shift to state 31
+-- On And shift to state 60
+-- On Virg reduce production seqs -> seqs Virg expressao 
+-- On FParen reduce production seqs -> seqs Virg expressao 
+
+State 66:
+expressao -> expressao . And expr10 [ Virg Or FParen And ]
+expressao -> expressao . Or expr10 [ Virg Or FParen And ]
+seqs -> expressao . [ Virg FParen ]
+-- On Or shift to state 31
+-- On And shift to state 60
+-- On Virg reduce production seqs -> expressao 
+-- On FParen reduce production seqs -> expressao 
+
+State 67:
+chama_func -> Ident AParen args . FParen [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On FParen shift to state 68
+
+State 68:
+chama_func -> Ident AParen args FParen . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production chama_func -> Ident AParen args FParen 
+-- On Virg reduce production chama_func -> Ident AParen args FParen 
+-- On TInt reduce production chama_func -> Ident AParen args FParen 
+-- On TFloat reduce production chama_func -> Ident AParen args FParen 
+-- On TChar reduce production chama_func -> Ident AParen args FParen 
+-- On TBool reduce production chama_func -> Ident AParen args FParen 
+-- On Switch reduce production chama_func -> Ident AParen args FParen 
+-- On Scanf reduce production chama_func -> Ident AParen args FParen 
+-- On Return reduce production chama_func -> Ident AParen args FParen 
+-- On Printf reduce production chama_func -> Ident AParen args FParen 
+-- On PTVirg reduce production chama_func -> Ident AParen args FParen 
+-- On Or reduce production chama_func -> Ident AParen args FParen 
+-- On OpSub reduce production chama_func -> Ident AParen args FParen 
+-- On OpSoma reduce production chama_func -> Ident AParen args FParen 
+-- On OpMul reduce production chama_func -> Ident AParen args FParen 
+-- On OpDiv reduce production chama_func -> Ident AParen args FParen 
+-- On MenorI reduce production chama_func -> Ident AParen args FParen 
+-- On Menor reduce production chama_func -> Ident AParen args FParen 
+-- On MaiorI reduce production chama_func -> Ident AParen args FParen 
+-- On Maior reduce production chama_func -> Ident AParen args FParen 
+-- On If reduce production chama_func -> Ident AParen args FParen 
+-- On Ident reduce production chama_func -> Ident AParen args FParen 
+-- On GetChar reduce production chama_func -> Ident AParen args FParen 
+-- On For reduce production chama_func -> Ident AParen args FParen 
+-- On FParen reduce production chama_func -> Ident AParen args FParen 
+-- On FChave reduce production chama_func -> Ident AParen args FParen 
+-- On DoisP reduce production chama_func -> Ident AParen args FParen 
+-- On Dif reduce production chama_func -> Ident AParen args FParen 
+-- On Comp reduce production chama_func -> Ident AParen args FParen 
+-- On Break reduce production chama_func -> Ident AParen args FParen 
+-- On Apost reduce production chama_func -> Ident AParen args FParen 
+-- On And reduce production chama_func -> Ident AParen args FParen 
+
+State 69:
+expr50 -> Not expr50 . [ While Virg TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or OpSub OpSoma OpMul OpDiv MenorI Menor MaiorI Maior If Ident GetChar For FParen FChave DoisP Dif Comp Break Apost And ]
+-- On While reduce production expr50 -> Not expr50 
+-- On Virg reduce production expr50 -> Not expr50 
+-- On TInt reduce production expr50 -> Not expr50 
+-- On TFloat reduce production expr50 -> Not expr50 
+-- On TChar reduce production expr50 -> Not expr50 
+-- On TBool reduce production expr50 -> Not expr50 
+-- On Switch reduce production expr50 -> Not expr50 
+-- On Scanf reduce production expr50 -> Not expr50 
+-- On Return reduce production expr50 -> Not expr50 
+-- On Printf reduce production expr50 -> Not expr50 
+-- On PTVirg reduce production expr50 -> Not expr50 
+-- On Or reduce production expr50 -> Not expr50 
+-- On OpSub reduce production expr50 -> Not expr50 
+-- On OpSoma reduce production expr50 -> Not expr50 
+-- On OpMul reduce production expr50 -> Not expr50 
+-- On OpDiv reduce production expr50 -> Not expr50 
+-- On MenorI reduce production expr50 -> Not expr50 
+-- On Menor reduce production expr50 -> Not expr50 
+-- On MaiorI reduce production expr50 -> Not expr50 
+-- On Maior reduce production expr50 -> Not expr50 
+-- On If reduce production expr50 -> Not expr50 
+-- On Ident reduce production expr50 -> Not expr50 
+-- On GetChar reduce production expr50 -> Not expr50 
+-- On For reduce production expr50 -> Not expr50 
+-- On FParen reduce production expr50 -> Not expr50 
+-- On FChave reduce production expr50 -> Not expr50 
+-- On DoisP reduce production expr50 -> Not expr50 
+-- On Dif reduce production expr50 -> Not expr50 
+-- On Comp reduce production expr50 -> Not expr50 
+-- On Break reduce production expr50 -> Not expr50 
+-- On Apost reduce production expr50 -> Not expr50 
+-- On And reduce production expr50 -> Not expr50 
+
+State 70:
+cmd_while -> While AParen expressao . FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+expressao -> expressao . And expr10 [ Or FParen And ]
+expressao -> expressao . Or expr10 [ Or FParen And ]
+-- On Or shift to state 31
+-- On FParen shift to state 71
+-- On And shift to state 60
+
+State 71:
+cmd_while -> While AParen expressao FParen . AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AChave shift to state 72
+
+State 72:
+cmd_while -> While AParen expressao FParen AChave . comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 161
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On FChave reduce production comandos -> 
+
+State 73:
+cmd_switch -> Switch . AParen expressao FParen AChave cases default FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AParen shift to state 74
+
+State 74:
+cmd_switch -> Switch AParen . expressao FParen AChave cases default FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 75
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 75:
+cmd_switch -> Switch AParen expressao . FParen AChave cases default FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+expressao -> expressao . And expr10 [ Or FParen And ]
+expressao -> expressao . Or expr10 [ Or FParen And ]
+-- On Or shift to state 31
+-- On FParen shift to state 76
+-- On And shift to state 60
+
+State 76:
+cmd_switch -> Switch AParen expressao FParen . AChave cases default FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AChave shift to state 77
+
+State 77:
+cmd_switch -> Switch AParen expressao FParen AChave . cases default FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Case shift to state 78
+-- On cases shift to state 151
+-- On case shift to state 159
+-- On Default reduce production cases -> 
+
+State 78:
+case -> Case . expressao DoisP comandos Break PTVirg [ Default Case ]
+case -> Case . Apost expressao Apost DoisP comandos Break PTVirg [ Default Case ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On Apost shift to state 79
+-- On AParen shift to state 29
+-- On expressao shift to state 146
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 79:
+case -> Case Apost . expressao Apost DoisP comandos Break PTVirg [ Default Case ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 80
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 80:
+case -> Case Apost expressao . Apost DoisP comandos Break PTVirg [ Default Case ]
+expressao -> expressao . And expr10 [ Or Apost And ]
+expressao -> expressao . Or expr10 [ Or Apost And ]
+-- On Or shift to state 31
+-- On Apost shift to state 81
+-- On And shift to state 60
+
+State 81:
+case -> Case Apost expressao Apost . DoisP comandos Break PTVirg [ Default Case ]
+-- On DoisP shift to state 82
+
+State 82:
+case -> Case Apost expressao Apost DoisP . comandos Break PTVirg [ Default Case ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 143
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On Break reduce production comandos -> 
+
+State 83:
+cmd_scanf -> Scanf . AParen expressao Virg ECom Ident FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AParen shift to state 84
+
+State 84:
+cmd_scanf -> Scanf AParen . expressao Virg ECom Ident FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 85
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 85:
+cmd_scanf -> Scanf AParen expressao . Virg ECom Ident FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+expressao -> expressao . And expr10 [ Virg Or And ]
+expressao -> expressao . Or expr10 [ Virg Or And ]
+-- On Virg shift to state 86
+-- On Or shift to state 31
+-- On And shift to state 60
+
+State 86:
+cmd_scanf -> Scanf AParen expressao Virg . ECom Ident FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On ECom shift to state 87
+
+State 87:
+cmd_scanf -> Scanf AParen expressao Virg ECom . Ident FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Ident shift to state 88
+
+State 88:
+cmd_scanf -> Scanf AParen expressao Virg ECom Ident . FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FParen shift to state 89
+
+State 89:
+cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On TInt reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On TFloat reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On TChar reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On TBool reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On Switch reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On Scanf reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On Return reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On Printf reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On PTVirg reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On If reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On Ident reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On GetChar reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On For reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On FParen reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On FChave reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+-- On Break reduce production cmd_scanf -> Scanf AParen expressao Virg ECom Ident FParen 
+
+State 90:
+cmd_printf -> Printf . AParen args FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AParen shift to state 91
+
+State 91:
+cmd_printf -> Printf AParen . args FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On seqs shift to state 63
+-- On expressao shift to state 66
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+-- On args shift to state 92
+-- On FParen reduce production args -> 
+
+State 92:
+cmd_printf -> Printf AParen args . FParen [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FParen shift to state 93
+
+State 93:
+cmd_printf -> Printf AParen args FParen . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_printf -> Printf AParen args FParen 
+-- On TInt reduce production cmd_printf -> Printf AParen args FParen 
+-- On TFloat reduce production cmd_printf -> Printf AParen args FParen 
+-- On TChar reduce production cmd_printf -> Printf AParen args FParen 
+-- On TBool reduce production cmd_printf -> Printf AParen args FParen 
+-- On Switch reduce production cmd_printf -> Printf AParen args FParen 
+-- On Scanf reduce production cmd_printf -> Printf AParen args FParen 
+-- On Return reduce production cmd_printf -> Printf AParen args FParen 
+-- On Printf reduce production cmd_printf -> Printf AParen args FParen 
+-- On PTVirg reduce production cmd_printf -> Printf AParen args FParen 
+-- On If reduce production cmd_printf -> Printf AParen args FParen 
+-- On Ident reduce production cmd_printf -> Printf AParen args FParen 
+-- On GetChar reduce production cmd_printf -> Printf AParen args FParen 
+-- On For reduce production cmd_printf -> Printf AParen args FParen 
+-- On FParen reduce production cmd_printf -> Printf AParen args FParen 
+-- On FChave reduce production cmd_printf -> Printf AParen args FParen 
+-- On Break reduce production cmd_printf -> Printf AParen args FParen 
+
+State 94:
+cmd_if -> If . AParen expressao FParen AChave comandos FChave elsee [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AParen shift to state 95
+
+State 95:
+cmd_if -> If AParen . expressao FParen AChave comandos FChave elsee [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 96
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 96:
+cmd_if -> If AParen expressao . FParen AChave comandos FChave elsee [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+expressao -> expressao . And expr10 [ Or FParen And ]
+expressao -> expressao . Or expr10 [ Or FParen And ]
+-- On Or shift to state 31
+-- On FParen shift to state 97
+-- On And shift to state 60
+
+State 97:
+cmd_if -> If AParen expressao FParen . AChave comandos FChave elsee [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AChave shift to state 98
+
+State 98:
+cmd_if -> If AParen expressao FParen AChave . comandos FChave elsee [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 135
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On FChave reduce production comandos -> 
+
+State 99:
+cmd_atrib -> Ident . Atrib expressao [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+cmd_incr -> Ident . Inc [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Inc shift to state 100
+-- On Atrib shift to state 101
+
+State 100:
+cmd_incr -> Ident Inc . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_incr -> Ident Inc 
+-- On TInt reduce production cmd_incr -> Ident Inc 
+-- On TFloat reduce production cmd_incr -> Ident Inc 
+-- On TChar reduce production cmd_incr -> Ident Inc 
+-- On TBool reduce production cmd_incr -> Ident Inc 
+-- On Switch reduce production cmd_incr -> Ident Inc 
+-- On Scanf reduce production cmd_incr -> Ident Inc 
+-- On Return reduce production cmd_incr -> Ident Inc 
+-- On Printf reduce production cmd_incr -> Ident Inc 
+-- On PTVirg reduce production cmd_incr -> Ident Inc 
+-- On If reduce production cmd_incr -> Ident Inc 
+-- On Ident reduce production cmd_incr -> Ident Inc 
+-- On GetChar reduce production cmd_incr -> Ident Inc 
+-- On For reduce production cmd_incr -> Ident Inc 
+-- On FParen reduce production cmd_incr -> Ident Inc 
+-- On FChave reduce production cmd_incr -> Ident Inc 
+-- On Break reduce production cmd_incr -> Ident Inc 
+
+State 101:
+cmd_atrib -> Ident Atrib . expressao [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 102
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 102:
+cmd_atrib -> Ident Atrib expressao . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+expressao -> expressao . And expr10 [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave Break And ]
+expressao -> expressao . Or expr10 [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave Break And ]
+-- On Or shift to state 31
+-- On And shift to state 60
+-- On While reduce production cmd_atrib -> Ident Atrib expressao 
+-- On TInt reduce production cmd_atrib -> Ident Atrib expressao 
+-- On TFloat reduce production cmd_atrib -> Ident Atrib expressao 
+-- On TChar reduce production cmd_atrib -> Ident Atrib expressao 
+-- On TBool reduce production cmd_atrib -> Ident Atrib expressao 
+-- On Switch reduce production cmd_atrib -> Ident Atrib expressao 
+-- On Scanf reduce production cmd_atrib -> Ident Atrib expressao 
+-- On Return reduce production cmd_atrib -> Ident Atrib expressao 
+-- On Printf reduce production cmd_atrib -> Ident Atrib expressao 
+-- On PTVirg reduce production cmd_atrib -> Ident Atrib expressao 
+-- On If reduce production cmd_atrib -> Ident Atrib expressao 
+-- On Ident reduce production cmd_atrib -> Ident Atrib expressao 
+-- On GetChar reduce production cmd_atrib -> Ident Atrib expressao 
+-- On For reduce production cmd_atrib -> Ident Atrib expressao 
+-- On FParen reduce production cmd_atrib -> Ident Atrib expressao 
+-- On FChave reduce production cmd_atrib -> Ident Atrib expressao 
+-- On Break reduce production cmd_atrib -> Ident Atrib expressao 
+
+State 103:
+cmd_getc -> GetChar . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_getc -> GetChar 
+-- On TInt reduce production cmd_getc -> GetChar 
+-- On TFloat reduce production cmd_getc -> GetChar 
+-- On TChar reduce production cmd_getc -> GetChar 
+-- On TBool reduce production cmd_getc -> GetChar 
+-- On Switch reduce production cmd_getc -> GetChar 
+-- On Scanf reduce production cmd_getc -> GetChar 
+-- On Return reduce production cmd_getc -> GetChar 
+-- On Printf reduce production cmd_getc -> GetChar 
+-- On PTVirg reduce production cmd_getc -> GetChar 
+-- On If reduce production cmd_getc -> GetChar 
+-- On Ident reduce production cmd_getc -> GetChar 
+-- On GetChar reduce production cmd_getc -> GetChar 
+-- On For reduce production cmd_getc -> GetChar 
+-- On FParen reduce production cmd_getc -> GetChar 
+-- On FChave reduce production cmd_getc -> GetChar 
+-- On Break reduce production cmd_getc -> GetChar 
+
+State 104:
+cmd_for -> For . AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AParen shift to state 105
+
+State 105:
+cmd_for -> For AParen . cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Ident shift to state 106
+-- On cmd_atrib shift to state 107
+
+State 106:
+cmd_atrib -> Ident . Atrib expressao [ PTVirg ]
+-- On Atrib shift to state 101
+
+State 107:
+cmd_for -> For AParen cmd_atrib . PTVirg expressao PTVirg comando FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On PTVirg shift to state 108
+
+State 108:
+cmd_for -> For AParen cmd_atrib PTVirg . expressao PTVirg comando FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 109
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 109:
+cmd_for -> For AParen cmd_atrib PTVirg expressao . PTVirg comando FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+expressao -> expressao . And expr10 [ PTVirg Or And ]
+expressao -> expressao . Or expr10 [ PTVirg Or And ]
+-- On PTVirg shift to state 110
+-- On Or shift to state 31
+-- On And shift to state 60
+
+State 110:
+cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg . comando FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comando shift to state 116
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+
+State 111:
+cmd_dec -> tipo . Ident inicial [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Ident shift to state 112
+
+State 112:
+cmd_dec -> tipo Ident . inicial [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Atrib shift to state 113
+-- On inicial shift to state 115
+-- On While reduce production inicial -> 
+-- On TInt reduce production inicial -> 
+-- On TFloat reduce production inicial -> 
+-- On TChar reduce production inicial -> 
+-- On TBool reduce production inicial -> 
+-- On Switch reduce production inicial -> 
+-- On Scanf reduce production inicial -> 
+-- On Return reduce production inicial -> 
+-- On Printf reduce production inicial -> 
+-- On PTVirg reduce production inicial -> 
+-- On If reduce production inicial -> 
+-- On Ident reduce production inicial -> 
+-- On GetChar reduce production inicial -> 
+-- On For reduce production inicial -> 
+-- On FParen reduce production inicial -> 
+-- On FChave reduce production inicial -> 
+-- On Break reduce production inicial -> 
+
+State 113:
+inicial -> Atrib . expressao [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 114
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 114:
+expressao -> expressao . And expr10 [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave Break And ]
+expressao -> expressao . Or expr10 [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg Or If Ident GetChar For FParen FChave Break And ]
+inicial -> Atrib expressao . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Or shift to state 31
+-- On And shift to state 60
+-- On While reduce production inicial -> Atrib expressao 
+-- On TInt reduce production inicial -> Atrib expressao 
+-- On TFloat reduce production inicial -> Atrib expressao 
+-- On TChar reduce production inicial -> Atrib expressao 
+-- On TBool reduce production inicial -> Atrib expressao 
+-- On Switch reduce production inicial -> Atrib expressao 
+-- On Scanf reduce production inicial -> Atrib expressao 
+-- On Return reduce production inicial -> Atrib expressao 
+-- On Printf reduce production inicial -> Atrib expressao 
+-- On PTVirg reduce production inicial -> Atrib expressao 
+-- On If reduce production inicial -> Atrib expressao 
+-- On Ident reduce production inicial -> Atrib expressao 
+-- On GetChar reduce production inicial -> Atrib expressao 
+-- On For reduce production inicial -> Atrib expressao 
+-- On FParen reduce production inicial -> Atrib expressao 
+-- On FChave reduce production inicial -> Atrib expressao 
+-- On Break reduce production inicial -> Atrib expressao 
+
+State 115:
+cmd_dec -> tipo Ident inicial . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_dec -> tipo Ident inicial 
+-- On TInt reduce production cmd_dec -> tipo Ident inicial 
+-- On TFloat reduce production cmd_dec -> tipo Ident inicial 
+-- On TChar reduce production cmd_dec -> tipo Ident inicial 
+-- On TBool reduce production cmd_dec -> tipo Ident inicial 
+-- On Switch reduce production cmd_dec -> tipo Ident inicial 
+-- On Scanf reduce production cmd_dec -> tipo Ident inicial 
+-- On Return reduce production cmd_dec -> tipo Ident inicial 
+-- On Printf reduce production cmd_dec -> tipo Ident inicial 
+-- On PTVirg reduce production cmd_dec -> tipo Ident inicial 
+-- On If reduce production cmd_dec -> tipo Ident inicial 
+-- On Ident reduce production cmd_dec -> tipo Ident inicial 
+-- On GetChar reduce production cmd_dec -> tipo Ident inicial 
+-- On For reduce production cmd_dec -> tipo Ident inicial 
+-- On FParen reduce production cmd_dec -> tipo Ident inicial 
+-- On FChave reduce production cmd_dec -> tipo Ident inicial 
+-- On Break reduce production cmd_dec -> tipo Ident inicial 
+
+State 116:
+cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando . FParen AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FParen shift to state 117
+
+State 117:
+cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen . AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On AChave shift to state 118
+
+State 118:
+cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave . comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 119
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On FChave reduce production comandos -> 
+
+State 119:
+cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos . FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FChave shift to state 120
+
+State 120:
+cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On TInt reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On TFloat reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On TChar reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On TBool reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On Switch reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On Scanf reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On Return reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On Printf reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On PTVirg reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On If reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On Ident reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On GetChar reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On For reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On FParen reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On FChave reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+-- On Break reduce production cmd_for -> For AParen cmd_atrib PTVirg expressao PTVirg comando FParen AChave comandos FChave 
+
+State 121:
+comandos -> comando . PTVirg comandos [ Return FChave Break ]
+comandos -> comando . comandos [ Return FChave Break ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On PTVirg shift to state 122
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 134
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On Return reduce production comandos -> 
+-- On FChave reduce production comandos -> 
+-- On Break reduce production comandos -> 
+
+State 122:
+comandos -> comando PTVirg . comandos [ Return FChave Break ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 123
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On Return reduce production comandos -> 
+-- On FChave reduce production comandos -> 
+-- On Break reduce production comandos -> 
+
+State 123:
+comandos -> comando PTVirg comandos . [ Return FChave Break ]
+-- On Return reduce production comandos -> comando PTVirg comandos 
+-- On FChave reduce production comandos -> comando PTVirg comandos 
+-- On Break reduce production comandos -> comando PTVirg comandos 
+
+State 124:
+comando -> cmd_while . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_while 
+-- On TInt reduce production comando -> cmd_while 
+-- On TFloat reduce production comando -> cmd_while 
+-- On TChar reduce production comando -> cmd_while 
+-- On TBool reduce production comando -> cmd_while 
+-- On Switch reduce production comando -> cmd_while 
+-- On Scanf reduce production comando -> cmd_while 
+-- On Return reduce production comando -> cmd_while 
+-- On Printf reduce production comando -> cmd_while 
+-- On PTVirg reduce production comando -> cmd_while 
+-- On If reduce production comando -> cmd_while 
+-- On Ident reduce production comando -> cmd_while 
+-- On GetChar reduce production comando -> cmd_while 
+-- On For reduce production comando -> cmd_while 
+-- On FParen reduce production comando -> cmd_while 
+-- On FChave reduce production comando -> cmd_while 
+-- On Break reduce production comando -> cmd_while 
+
+State 125:
+comando -> cmd_switch . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_switch 
+-- On TInt reduce production comando -> cmd_switch 
+-- On TFloat reduce production comando -> cmd_switch 
+-- On TChar reduce production comando -> cmd_switch 
+-- On TBool reduce production comando -> cmd_switch 
+-- On Switch reduce production comando -> cmd_switch 
+-- On Scanf reduce production comando -> cmd_switch 
+-- On Return reduce production comando -> cmd_switch 
+-- On Printf reduce production comando -> cmd_switch 
+-- On PTVirg reduce production comando -> cmd_switch 
+-- On If reduce production comando -> cmd_switch 
+-- On Ident reduce production comando -> cmd_switch 
+-- On GetChar reduce production comando -> cmd_switch 
+-- On For reduce production comando -> cmd_switch 
+-- On FParen reduce production comando -> cmd_switch 
+-- On FChave reduce production comando -> cmd_switch 
+-- On Break reduce production comando -> cmd_switch 
+
+State 126:
+comando -> cmd_scanf . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_scanf 
+-- On TInt reduce production comando -> cmd_scanf 
+-- On TFloat reduce production comando -> cmd_scanf 
+-- On TChar reduce production comando -> cmd_scanf 
+-- On TBool reduce production comando -> cmd_scanf 
+-- On Switch reduce production comando -> cmd_scanf 
+-- On Scanf reduce production comando -> cmd_scanf 
+-- On Return reduce production comando -> cmd_scanf 
+-- On Printf reduce production comando -> cmd_scanf 
+-- On PTVirg reduce production comando -> cmd_scanf 
+-- On If reduce production comando -> cmd_scanf 
+-- On Ident reduce production comando -> cmd_scanf 
+-- On GetChar reduce production comando -> cmd_scanf 
+-- On For reduce production comando -> cmd_scanf 
+-- On FParen reduce production comando -> cmd_scanf 
+-- On FChave reduce production comando -> cmd_scanf 
+-- On Break reduce production comando -> cmd_scanf 
+
+State 127:
+comando -> cmd_printf . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_printf 
+-- On TInt reduce production comando -> cmd_printf 
+-- On TFloat reduce production comando -> cmd_printf 
+-- On TChar reduce production comando -> cmd_printf 
+-- On TBool reduce production comando -> cmd_printf 
+-- On Switch reduce production comando -> cmd_printf 
+-- On Scanf reduce production comando -> cmd_printf 
+-- On Return reduce production comando -> cmd_printf 
+-- On Printf reduce production comando -> cmd_printf 
+-- On PTVirg reduce production comando -> cmd_printf 
+-- On If reduce production comando -> cmd_printf 
+-- On Ident reduce production comando -> cmd_printf 
+-- On GetChar reduce production comando -> cmd_printf 
+-- On For reduce production comando -> cmd_printf 
+-- On FParen reduce production comando -> cmd_printf 
+-- On FChave reduce production comando -> cmd_printf 
+-- On Break reduce production comando -> cmd_printf 
+
+State 128:
+comando -> cmd_incr . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_incr 
+-- On TInt reduce production comando -> cmd_incr 
+-- On TFloat reduce production comando -> cmd_incr 
+-- On TChar reduce production comando -> cmd_incr 
+-- On TBool reduce production comando -> cmd_incr 
+-- On Switch reduce production comando -> cmd_incr 
+-- On Scanf reduce production comando -> cmd_incr 
+-- On Return reduce production comando -> cmd_incr 
+-- On Printf reduce production comando -> cmd_incr 
+-- On PTVirg reduce production comando -> cmd_incr 
+-- On If reduce production comando -> cmd_incr 
+-- On Ident reduce production comando -> cmd_incr 
+-- On GetChar reduce production comando -> cmd_incr 
+-- On For reduce production comando -> cmd_incr 
+-- On FParen reduce production comando -> cmd_incr 
+-- On FChave reduce production comando -> cmd_incr 
+-- On Break reduce production comando -> cmd_incr 
+
+State 129:
+comando -> cmd_if . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_if 
+-- On TInt reduce production comando -> cmd_if 
+-- On TFloat reduce production comando -> cmd_if 
+-- On TChar reduce production comando -> cmd_if 
+-- On TBool reduce production comando -> cmd_if 
+-- On Switch reduce production comando -> cmd_if 
+-- On Scanf reduce production comando -> cmd_if 
+-- On Return reduce production comando -> cmd_if 
+-- On Printf reduce production comando -> cmd_if 
+-- On PTVirg reduce production comando -> cmd_if 
+-- On If reduce production comando -> cmd_if 
+-- On Ident reduce production comando -> cmd_if 
+-- On GetChar reduce production comando -> cmd_if 
+-- On For reduce production comando -> cmd_if 
+-- On FParen reduce production comando -> cmd_if 
+-- On FChave reduce production comando -> cmd_if 
+-- On Break reduce production comando -> cmd_if 
+
+State 130:
+comando -> cmd_getc . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_getc 
+-- On TInt reduce production comando -> cmd_getc 
+-- On TFloat reduce production comando -> cmd_getc 
+-- On TChar reduce production comando -> cmd_getc 
+-- On TBool reduce production comando -> cmd_getc 
+-- On Switch reduce production comando -> cmd_getc 
+-- On Scanf reduce production comando -> cmd_getc 
+-- On Return reduce production comando -> cmd_getc 
+-- On Printf reduce production comando -> cmd_getc 
+-- On PTVirg reduce production comando -> cmd_getc 
+-- On If reduce production comando -> cmd_getc 
+-- On Ident reduce production comando -> cmd_getc 
+-- On GetChar reduce production comando -> cmd_getc 
+-- On For reduce production comando -> cmd_getc 
+-- On FParen reduce production comando -> cmd_getc 
+-- On FChave reduce production comando -> cmd_getc 
+-- On Break reduce production comando -> cmd_getc 
+
+State 131:
+comando -> cmd_for . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_for 
+-- On TInt reduce production comando -> cmd_for 
+-- On TFloat reduce production comando -> cmd_for 
+-- On TChar reduce production comando -> cmd_for 
+-- On TBool reduce production comando -> cmd_for 
+-- On Switch reduce production comando -> cmd_for 
+-- On Scanf reduce production comando -> cmd_for 
+-- On Return reduce production comando -> cmd_for 
+-- On Printf reduce production comando -> cmd_for 
+-- On PTVirg reduce production comando -> cmd_for 
+-- On If reduce production comando -> cmd_for 
+-- On Ident reduce production comando -> cmd_for 
+-- On GetChar reduce production comando -> cmd_for 
+-- On For reduce production comando -> cmd_for 
+-- On FParen reduce production comando -> cmd_for 
+-- On FChave reduce production comando -> cmd_for 
+-- On Break reduce production comando -> cmd_for 
+
+State 132:
+comando -> cmd_dec . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_dec 
+-- On TInt reduce production comando -> cmd_dec 
+-- On TFloat reduce production comando -> cmd_dec 
+-- On TChar reduce production comando -> cmd_dec 
+-- On TBool reduce production comando -> cmd_dec 
+-- On Switch reduce production comando -> cmd_dec 
+-- On Scanf reduce production comando -> cmd_dec 
+-- On Return reduce production comando -> cmd_dec 
+-- On Printf reduce production comando -> cmd_dec 
+-- On PTVirg reduce production comando -> cmd_dec 
+-- On If reduce production comando -> cmd_dec 
+-- On Ident reduce production comando -> cmd_dec 
+-- On GetChar reduce production comando -> cmd_dec 
+-- On For reduce production comando -> cmd_dec 
+-- On FParen reduce production comando -> cmd_dec 
+-- On FChave reduce production comando -> cmd_dec 
+-- On Break reduce production comando -> cmd_dec 
+
+State 133:
+comando -> cmd_atrib . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production comando -> cmd_atrib 
+-- On TInt reduce production comando -> cmd_atrib 
+-- On TFloat reduce production comando -> cmd_atrib 
+-- On TChar reduce production comando -> cmd_atrib 
+-- On TBool reduce production comando -> cmd_atrib 
+-- On Switch reduce production comando -> cmd_atrib 
+-- On Scanf reduce production comando -> cmd_atrib 
+-- On Return reduce production comando -> cmd_atrib 
+-- On Printf reduce production comando -> cmd_atrib 
+-- On PTVirg reduce production comando -> cmd_atrib 
+-- On If reduce production comando -> cmd_atrib 
+-- On Ident reduce production comando -> cmd_atrib 
+-- On GetChar reduce production comando -> cmd_atrib 
+-- On For reduce production comando -> cmd_atrib 
+-- On FParen reduce production comando -> cmd_atrib 
+-- On FChave reduce production comando -> cmd_atrib 
+-- On Break reduce production comando -> cmd_atrib 
+
+State 134:
+comandos -> comando comandos . [ Return FChave Break ]
+-- On Return reduce production comandos -> comando comandos 
+-- On FChave reduce production comandos -> comando comandos 
+-- On Break reduce production comandos -> comando comandos 
+
+State 135:
+cmd_if -> If AParen expressao FParen AChave comandos . FChave elsee [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FChave shift to state 136
+
+State 136:
+cmd_if -> If AParen expressao FParen AChave comandos FChave . elsee [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Else shift to state 137
+-- On elsee shift to state 142
+-- On While reduce production elsee -> 
+-- On TInt reduce production elsee -> 
+-- On TFloat reduce production elsee -> 
+-- On TChar reduce production elsee -> 
+-- On TBool reduce production elsee -> 
+-- On Switch reduce production elsee -> 
+-- On Scanf reduce production elsee -> 
+-- On Return reduce production elsee -> 
+-- On Printf reduce production elsee -> 
+-- On PTVirg reduce production elsee -> 
+-- On If reduce production elsee -> 
+-- On Ident reduce production elsee -> 
+-- On GetChar reduce production elsee -> 
+-- On For reduce production elsee -> 
+-- On FParen reduce production elsee -> 
+-- On FChave reduce production elsee -> 
+-- On Break reduce production elsee -> 
+
+State 137:
+elsee -> Else . AChave comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+elsee -> Else . cmd_if [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On If shift to state 94
+-- On AChave shift to state 138
+-- On cmd_if shift to state 141
+
+State 138:
+elsee -> Else AChave . comandos FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 139
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On FChave reduce production comandos -> 
+
+State 139:
+elsee -> Else AChave comandos . FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FChave shift to state 140
+
+State 140:
+elsee -> Else AChave comandos FChave . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production elsee -> Else AChave comandos FChave 
+-- On TInt reduce production elsee -> Else AChave comandos FChave 
+-- On TFloat reduce production elsee -> Else AChave comandos FChave 
+-- On TChar reduce production elsee -> Else AChave comandos FChave 
+-- On TBool reduce production elsee -> Else AChave comandos FChave 
+-- On Switch reduce production elsee -> Else AChave comandos FChave 
+-- On Scanf reduce production elsee -> Else AChave comandos FChave 
+-- On Return reduce production elsee -> Else AChave comandos FChave 
+-- On Printf reduce production elsee -> Else AChave comandos FChave 
+-- On PTVirg reduce production elsee -> Else AChave comandos FChave 
+-- On If reduce production elsee -> Else AChave comandos FChave 
+-- On Ident reduce production elsee -> Else AChave comandos FChave 
+-- On GetChar reduce production elsee -> Else AChave comandos FChave 
+-- On For reduce production elsee -> Else AChave comandos FChave 
+-- On FParen reduce production elsee -> Else AChave comandos FChave 
+-- On FChave reduce production elsee -> Else AChave comandos FChave 
+-- On Break reduce production elsee -> Else AChave comandos FChave 
+
+State 141:
+elsee -> Else cmd_if . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production elsee -> Else cmd_if 
+-- On TInt reduce production elsee -> Else cmd_if 
+-- On TFloat reduce production elsee -> Else cmd_if 
+-- On TChar reduce production elsee -> Else cmd_if 
+-- On TBool reduce production elsee -> Else cmd_if 
+-- On Switch reduce production elsee -> Else cmd_if 
+-- On Scanf reduce production elsee -> Else cmd_if 
+-- On Return reduce production elsee -> Else cmd_if 
+-- On Printf reduce production elsee -> Else cmd_if 
+-- On PTVirg reduce production elsee -> Else cmd_if 
+-- On If reduce production elsee -> Else cmd_if 
+-- On Ident reduce production elsee -> Else cmd_if 
+-- On GetChar reduce production elsee -> Else cmd_if 
+-- On For reduce production elsee -> Else cmd_if 
+-- On FParen reduce production elsee -> Else cmd_if 
+-- On FChave reduce production elsee -> Else cmd_if 
+-- On Break reduce production elsee -> Else cmd_if 
+
+State 142:
+cmd_if -> If AParen expressao FParen AChave comandos FChave elsee . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On TInt reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On TFloat reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On TChar reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On TBool reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On Switch reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On Scanf reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On Return reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On Printf reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On PTVirg reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On If reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On Ident reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On GetChar reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On For reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On FParen reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On FChave reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+-- On Break reduce production cmd_if -> If AParen expressao FParen AChave comandos FChave elsee 
+
+State 143:
+case -> Case Apost expressao Apost DoisP comandos . Break PTVirg [ Default Case ]
+-- On Break shift to state 144
+
+State 144:
+case -> Case Apost expressao Apost DoisP comandos Break . PTVirg [ Default Case ]
+-- On PTVirg shift to state 145
+
+State 145:
+case -> Case Apost expressao Apost DoisP comandos Break PTVirg . [ Default Case ]
+-- On Default reduce production case -> Case Apost expressao Apost DoisP comandos Break PTVirg 
+-- On Case reduce production case -> Case Apost expressao Apost DoisP comandos Break PTVirg 
+
+State 146:
+case -> Case expressao . DoisP comandos Break PTVirg [ Default Case ]
+expressao -> expressao . And expr10 [ Or DoisP And ]
+expressao -> expressao . Or expr10 [ Or DoisP And ]
+-- On Or shift to state 31
+-- On DoisP shift to state 147
+-- On And shift to state 60
+
+State 147:
+case -> Case expressao DoisP . comandos Break PTVirg [ Default Case ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 148
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On Break reduce production comandos -> 
+
+State 148:
+case -> Case expressao DoisP comandos . Break PTVirg [ Default Case ]
+-- On Break shift to state 149
+
+State 149:
+case -> Case expressao DoisP comandos Break . PTVirg [ Default Case ]
+-- On PTVirg shift to state 150
+
+State 150:
+case -> Case expressao DoisP comandos Break PTVirg . [ Default Case ]
+-- On Default reduce production case -> Case expressao DoisP comandos Break PTVirg 
+-- On Case reduce production case -> Case expressao DoisP comandos Break PTVirg 
+
+State 151:
+cmd_switch -> Switch AParen expressao FParen AChave cases . default FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On Default shift to state 152
+-- On default shift to state 157
+
+State 152:
+default -> Default . DoisP comandos Break PTVirg [ FChave ]
+-- On DoisP shift to state 153
+
+State 153:
+default -> Default DoisP . comandos Break PTVirg [ FChave ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 154
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On Break reduce production comandos -> 
+
+State 154:
+default -> Default DoisP comandos . Break PTVirg [ FChave ]
+-- On Break shift to state 155
+
+State 155:
+default -> Default DoisP comandos Break . PTVirg [ FChave ]
+-- On PTVirg shift to state 156
+
+State 156:
+default -> Default DoisP comandos Break PTVirg . [ FChave ]
+-- On FChave reduce production default -> Default DoisP comandos Break PTVirg 
+
+State 157:
+cmd_switch -> Switch AParen expressao FParen AChave cases default . FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FChave shift to state 158
+
+State 158:
+cmd_switch -> Switch AParen expressao FParen AChave cases default FChave . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On TInt reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On TFloat reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On TChar reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On TBool reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On Switch reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On Scanf reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On Return reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On Printf reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On PTVirg reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On If reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On Ident reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On GetChar reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On For reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On FParen reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On FChave reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+-- On Break reduce production cmd_switch -> Switch AParen expressao FParen AChave cases default FChave 
+
+State 159:
+cases -> case . cases [ Default ]
+-- On Case shift to state 78
+-- On cases shift to state 160
+-- On case shift to state 159
+-- On Default reduce production cases -> 
+
+State 160:
+cases -> case cases . [ Default ]
+-- On Default reduce production cases -> case cases 
+
+State 161:
+cmd_while -> While AParen expressao FParen AChave comandos . FChave [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On FChave shift to state 162
+
+State 162:
+cmd_while -> While AParen expressao FParen AChave comandos FChave . [ While TInt TFloat TChar TBool Switch Scanf Return Printf PTVirg If Ident GetChar For FParen FChave Break ]
+-- On While reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On TInt reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On TFloat reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On TChar reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On TBool reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On Switch reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On Scanf reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On Return reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On Printf reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On PTVirg reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On If reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On Ident reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On GetChar reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On For reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On FParen reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On FChave reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+-- On Break reduce production cmd_while -> While AParen expressao FParen AChave comandos FChave 
+
+State 163:
+funcao -> TInt Main AParen argumentos FParen AChave comandos . FChave [ TInt TFloat TChar TBool EOF ]
+-- On FChave shift to state 164
+
+State 164:
+funcao -> TInt Main AParen argumentos FParen AChave comandos FChave . [ TInt TFloat TChar TBool EOF ]
+-- On TInt reduce production funcao -> TInt Main AParen argumentos FParen AChave comandos FChave 
+-- On TFloat reduce production funcao -> TInt Main AParen argumentos FParen AChave comandos FChave 
+-- On TChar reduce production funcao -> TInt Main AParen argumentos FParen AChave comandos FChave 
+-- On TBool reduce production funcao -> TInt Main AParen argumentos FParen AChave comandos FChave 
+-- On EOF reduce production funcao -> TInt Main AParen argumentos FParen AChave comandos FChave 
+
+State 165:
+seq -> argumento . [ Virg FParen ]
+-- On Virg reduce production seq -> argumento 
+-- On FParen reduce production seq -> argumento 
+
+State 166:
+funcao -> tipo . Ident AParen argumentos FParen AChave comandos Return expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On Ident shift to state 167
+
+State 167:
+funcao -> tipo Ident . AParen argumentos FParen AChave comandos Return expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On AParen shift to state 168
+
+State 168:
+funcao -> tipo Ident AParen . argumentos FParen AChave comandos Return expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On tipo shift to state 11
+-- On seq shift to state 13
+-- On argumentos shift to state 169
+-- On argumento shift to state 165
+-- On FParen reduce production argumentos -> 
+
+State 169:
+funcao -> tipo Ident AParen argumentos . FParen AChave comandos Return expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On FParen shift to state 170
+
+State 170:
+funcao -> tipo Ident AParen argumentos FParen . AChave comandos Return expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On AChave shift to state 171
+
+State 171:
+funcao -> tipo Ident AParen argumentos FParen AChave . comandos Return expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On While shift to state 19
+-- On TInt shift to state 7
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On Switch shift to state 73
+-- On Scanf shift to state 83
+-- On Printf shift to state 90
+-- On If shift to state 94
+-- On Ident shift to state 99
+-- On GetChar shift to state 103
+-- On For shift to state 104
+-- On tipo shift to state 111
+-- On comandos shift to state 172
+-- On comando shift to state 121
+-- On cmd_while shift to state 124
+-- On cmd_switch shift to state 125
+-- On cmd_scanf shift to state 126
+-- On cmd_printf shift to state 127
+-- On cmd_incr shift to state 128
+-- On cmd_if shift to state 129
+-- On cmd_getc shift to state 130
+-- On cmd_for shift to state 131
+-- On cmd_dec shift to state 132
+-- On cmd_atrib shift to state 133
+-- On Return reduce production comandos -> 
+
+State 172:
+funcao -> tipo Ident AParen argumentos FParen AChave comandos . Return expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On Return shift to state 173
+
+State 173:
+funcao -> tipo Ident AParen argumentos FParen AChave comandos Return . expressao PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On STRING shift to state 21
+-- On Not shift to state 22
+-- On Ident shift to state 23
+-- On INT shift to state 25
+-- On FLOAT shift to state 26
+-- On CHAR shift to state 27
+-- On BOOL shift to state 28
+-- On AParen shift to state 29
+-- On expressao shift to state 174
+-- On expr60 shift to state 32
+-- On expr50 shift to state 33
+-- On expr40 shift to state 34
+-- On expr30 shift to state 40
+-- On expr20 shift to state 45
+-- On expr10 shift to state 62
+-- On chama_func shift to state 37
+
+State 174:
+expressao -> expressao . And expr10 [ PTVirg Or And ]
+expressao -> expressao . Or expr10 [ PTVirg Or And ]
+funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao . PTVirg FChave [ TInt TFloat TChar TBool EOF ]
+-- On PTVirg shift to state 175
+-- On Or shift to state 31
+-- On And shift to state 60
+
+State 175:
+funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao PTVirg . FChave [ TInt TFloat TChar TBool EOF ]
+-- On FChave shift to state 176
+
+State 176:
+funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao PTVirg FChave . [ TInt TFloat TChar TBool EOF ]
+-- On TInt reduce production funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao PTVirg FChave 
+-- On TFloat reduce production funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao PTVirg FChave 
+-- On TChar reduce production funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao PTVirg FChave 
+-- On TBool reduce production funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao PTVirg FChave 
+-- On EOF reduce production funcao -> tipo Ident AParen argumentos FParen AChave comandos Return expressao PTVirg FChave 
+
+State 177:
+programa -> includes funcoes . EOF [ # ]
+-- On EOF shift to state 178
+
+State 178:
+programa -> includes funcoes EOF . [ # ]
+-- On # reduce production programa -> includes funcoes EOF 
+
+State 179:
+funcoes -> funcao . funcoes [ EOF ]
+-- On TInt shift to state 4
+-- On TFloat shift to state 8
+-- On TChar shift to state 9
+-- On TBool shift to state 10
+-- On tipo shift to state 166
+-- On funcoes shift to state 180
+-- On funcao shift to state 179
+-- On EOF reduce production funcoes -> 
+
+State 180:
+funcoes -> funcao funcoes . [ EOF ]
+-- On EOF reduce production funcoes -> funcao funcoes 
+

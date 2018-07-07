@@ -1,0 +1,439 @@
+
+** Conflict (reduce/reduce) in state 157.
+** Token involved: FUNCAOMAIN
+** This state is reached from programa after reading:
+
+PROLOGO funcao 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain // lookahead token appears because funcaoMain can begin with FUNCAOMAIN
+        (?)
+
+** In state 157, looking ahead at FUNCAOMAIN, reducing production
+** funcoes -> funcao 
+** is permitted because of the following sub-derivation:
+
+funcao . 
+
+** In state 157, looking ahead at FUNCAOMAIN, reducing production
+** funcoes -> 
+** is permitted because of the following sub-derivation:
+
+funcao funcoes // lookahead token is inherited
+       . 
+
+** Conflict (shift/reduce) in state 134.
+** Token involved: ELSE
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE IF comparacao IF comparacao bloco 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  comando_if 
+                                  (?)
+
+** In state 134, looking ahead at ELSE, reducing production
+** comando_if -> IF comparacao bloco 
+** is permitted because of the following sub-derivation:
+
+IF comparacao comando ELSE comando // lookahead token appears
+              comando_if // lookahead token is inherited
+              IF comparacao bloco . 
+
+** In state 134, looking ahead at ELSE, shifting is permitted
+** because of the following sub-derivation:
+
+IF comparacao comando 
+              comando_if 
+              IF comparacao bloco . ELSE comando 
+
+** Conflict (shift/reduce) in state 130.
+** Token involved: ELSE
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE IF comparacao IF comparacao comando 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  comando_if 
+                                  (?)
+
+** In state 130, looking ahead at ELSE, reducing production
+** comando_if -> IF comparacao comando 
+** is permitted because of the following sub-derivation:
+
+IF comparacao comando ELSE comando // lookahead token appears
+              comando_if // lookahead token is inherited
+              IF comparacao comando . 
+
+** In state 130, looking ahead at ELSE, shifting is permitted
+** because of the following sub-derivation:
+
+IF comparacao comando 
+              comando_if 
+              IF comparacao comando . ELSE comando 
+
+** Conflict (reduce/reduce) in state 127.
+** Tokens involved: RETURN FCHAVE
+** The following explanations concentrate on token RETURN.
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE comando 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE // lookahead token appears
+                                  (?)
+
+** In state 127, looking ahead at RETURN, reducing production
+** comandos -> 
+** is permitted because of the following sub-derivation:
+
+comando comandos // lookahead token is inherited
+        . 
+
+** In state 127, looking ahead at RETURN, reducing production
+** comandos -> comando 
+** is permitted because of the following sub-derivation:
+
+comando . 
+
+** Conflict (shift/reduce) in state 78.
+** Token involved: ID
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE TCHAR 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  declaracao 
+                                  (?)
+
+** In state 78, looking ahead at ID, shifting is permitted
+** because of the following sub-derivation:
+
+TCHAR . ID PTV 
+
+** In state 78, looking ahead at ID, reducing production
+** tipo -> TCHAR 
+** is permitted because of the following sub-derivation:
+
+tipo ID ACOL INT FCOL PTV // lookahead token appears
+TCHAR . 
+
+** Conflict (shift/reduce) in state 75.
+** Token involved: ID
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE TFLOAT 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  declaracao 
+                                  (?)
+
+** In state 75, looking ahead at ID, shifting is permitted
+** because of the following sub-derivation:
+
+TFLOAT . ID PTV 
+
+** In state 75, looking ahead at ID, reducing production
+** tipo -> TFLOAT 
+** is permitted because of the following sub-derivation:
+
+tipo ID ACOL INT FCOL PTV // lookahead token appears
+TFLOAT . 
+
+** Conflict (shift/reduce) in state 72.
+** Token involved: ID
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE TINT 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  declaracao 
+                                  (?)
+
+** In state 72, looking ahead at ID, shifting is permitted
+** because of the following sub-derivation:
+
+TINT . ID PTV 
+
+** In state 72, looking ahead at ID, reducing production
+** tipo -> TINT 
+** is permitted because of the following sub-derivation:
+
+tipo ID ACOL INT FCOL PTV // lookahead token appears
+TINT . 
+
+** Conflict (shift/reduce) in state 58.
+** Tokens involved: VEZES MENOS MAIS DIV
+** The following explanations concentrate on token VEZES.
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE PRINTSTR APAR NOT expressao 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  comando_output 
+                                  PRINTSTR APAR expressao FPAR PTV 
+                                                (?)
+
+** In state 58, looking ahead at VEZES, shifting is permitted
+** because of the following sub-derivation:
+
+NOT expressao 
+    expressao . VEZES expressao 
+
+** In state 58, looking ahead at VEZES, reducing production
+** expressao -> NOT expressao 
+** is permitted because of the following sub-derivation:
+
+expressao VEZES expressao // lookahead token appears
+NOT expressao . 
+
+** Conflict (shift/reduce) in state 49.
+** Tokens involved: MENOS MAIS
+** The following explanations concentrate on token MENOS.
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE PRINTSTR APAR expressao DIV expressao 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  comando_output 
+                                  PRINTSTR APAR expressao FPAR PTV 
+                                                (?)
+
+** In state 49, looking ahead at MENOS, shifting is permitted
+** because of the following sub-derivation:
+
+expressao DIV expressao 
+              expressao . MENOS expressao 
+
+** In state 49, looking ahead at MENOS, reducing production
+** expressao -> expressao DIV expressao 
+** is permitted because of the following sub-derivation:
+
+expressao MENOS expressao // lookahead token appears
+expressao DIV expressao . 
+
+** Conflict (shift/reduce) in state 47.
+** Tokens involved: VEZES MENOS MAIS DIV
+** The following explanations concentrate on token VEZES.
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE PRINTSTR APAR expressao MAIS expressao 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  comando_output 
+                                  PRINTSTR APAR expressao FPAR PTV 
+                                                (?)
+
+** In state 47, looking ahead at VEZES, reducing production
+** expressao -> expressao MAIS expressao 
+** is permitted because of the following sub-derivation:
+
+expressao VEZES expressao // lookahead token appears
+expressao MAIS expressao . 
+
+** In state 47, looking ahead at VEZES, shifting is permitted
+** because of the following sub-derivation:
+
+expressao MAIS expressao 
+               expressao . VEZES expressao 
+
+** Conflict (shift/reduce) in state 45.
+** Tokens involved: VEZES MENOS MAIS DIV
+** The following explanations concentrate on token VEZES.
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE PRINTSTR APAR expressao MENOS expressao 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  comando_output 
+                                  PRINTSTR APAR expressao FPAR PTV 
+                                                (?)
+
+** In state 45, looking ahead at VEZES, reducing production
+** expressao -> expressao MENOS expressao 
+** is permitted because of the following sub-derivation:
+
+expressao VEZES expressao // lookahead token appears
+expressao MENOS expressao . 
+
+** In state 45, looking ahead at VEZES, shifting is permitted
+** because of the following sub-derivation:
+
+expressao MENOS expressao 
+                expressao . VEZES expressao 
+
+** Conflict (shift/reduce) in state 43.
+** Tokens involved: MENOS MAIS
+** The following explanations concentrate on token MENOS.
+** This state is reached from programa after reading:
+
+PROLOGO funcoes FUNCAOMAIN ACHAVE PRINTSTR APAR expressao VEZES expressao 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+                FUNCAOMAIN ACHAVE comandos RETURN expressao PTV FCHAVE 
+                                  comando 
+                                  comando_output 
+                                  PRINTSTR APAR expressao FPAR PTV 
+                                                (?)
+
+** In state 43, looking ahead at MENOS, shifting is permitted
+** because of the following sub-derivation:
+
+expressao VEZES expressao 
+                expressao . MENOS expressao 
+
+** In state 43, looking ahead at MENOS, reducing production
+** expressao -> expressao VEZES expressao 
+** is permitted because of the following sub-derivation:
+
+expressao MENOS expressao // lookahead token appears
+expressao VEZES expressao . 
+
+** Conflict (shift/reduce) in state 14.
+** Token involved: ID
+** This state is reached from programa after reading:
+
+PROLOGO tipo ID APAR TCHAR 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+        funcao funcoes 
+        tipo ID APAR argumentos FPAR ACHAVE comandos RETURN expressao PTV FCHAVE 
+                     argumento VIRG argumentos 
+                     (?)
+
+** In state 14, looking ahead at ID, shifting is permitted
+** because of the following sub-derivation:
+
+TCHAR . ID PTV 
+
+** In state 14, looking ahead at ID, reducing production
+** tipo -> TCHAR 
+** is permitted because of the following sub-derivation:
+
+tipo ID ACOL INT FCOL // lookahead token appears
+TCHAR . 
+
+** Conflict (shift/reduce) in state 11.
+** Token involved: ID
+** This state is reached from programa after reading:
+
+PROLOGO tipo ID APAR TFLOAT 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+        funcao funcoes 
+        tipo ID APAR argumentos FPAR ACHAVE comandos RETURN expressao PTV FCHAVE 
+                     argumento VIRG argumentos 
+                     (?)
+
+** In state 11, looking ahead at ID, shifting is permitted
+** because of the following sub-derivation:
+
+TFLOAT . ID PTV 
+
+** In state 11, looking ahead at ID, reducing production
+** tipo -> TFLOAT 
+** is permitted because of the following sub-derivation:
+
+tipo ID ACOL INT FCOL // lookahead token appears
+TFLOAT . 
+
+** Conflict (shift/reduce) in state 8.
+** Token involved: ID
+** This state is reached from programa after reading:
+
+PROLOGO tipo ID APAR TINT 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+PROLOGO funcoes funcaoMain 
+        funcao funcoes 
+        tipo ID APAR argumentos FPAR ACHAVE comandos RETURN expressao PTV FCHAVE 
+                     argumento VIRG argumentos 
+                     (?)
+
+** In state 8, looking ahead at ID, shifting is permitted
+** because of the following sub-derivation:
+
+TINT . ID PTV 
+
+** In state 8, looking ahead at ID, reducing production
+** tipo -> TINT 
+** is permitted because of the following sub-derivation:
+
+tipo ID ACOL INT FCOL // lookahead token appears
+TINT . 

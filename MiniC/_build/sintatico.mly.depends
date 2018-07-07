@@ -1,0 +1,2 @@
+sintatico.ml: ArvSint Lexing
+sintatico.mli: ArvSint Lexing MenhirLib
