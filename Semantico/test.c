@@ -3,7 +3,7 @@
 int fatorial(int n){
     int aux;
     if(n <= 0){
-        return 1.0;
+        return 1;
     }else{
         return n * fatorial(n-1);
     }
@@ -12,10 +12,10 @@ int fatorial(int n){
 int main(){
     int numero,fat;
     
-    puts("Digite um numero: ");
+    print("Digite um numero: ");
     gets(numero);
     fat = fatorial(numero);
-    
-    puts("O fatorial eh");
-    puts(fat);
+    //fat = 1;
+    print("O fatorial eh");
+    print(fat);
 }

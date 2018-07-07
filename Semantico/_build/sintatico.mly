@@ -37,7 +37,7 @@
  %token <Lexing.position> WHILE
  %token <Lexing.position> FOR
  %token <Lexing.position> RETURN
- %token <Lexing.position> PUTS
+ %token <Lexing.position> PRINT
  %token <Lexing.position> GETS
  %token <Lexing.position> INCLUDE
 
@@ -118,7 +118,7 @@
  
   comando_entrada: GETS xs=expressao PONTOEV {CmdEntrada xs}
 
-  comando_saida: PUTS cs=expressao PONTOEV {CmdSaida cs}
+  comando_saida: PRINT cs=expressao PONTOEV {CmdSaida cs}
  
  
   comando_funcao: exp=chamada {CmdFun exp}

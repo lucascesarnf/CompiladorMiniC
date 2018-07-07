@@ -28,3 +28,6 @@ ocamlbuild -use-ocamlfind -use-menhir -menhir "menhir --table" -package menhirLi
 
 //To run interpret: 
 ocamlbuild -use-ocamlfind -use-menhir -menhir "menhir --table" -package menhirLib -r interpreteTeste.byte
+
+Semantico: verifica_tipos "nomedoarquivo";;
+Interprete:  interprete "nomedoarquivo";;

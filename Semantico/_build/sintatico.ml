@@ -34,7 +34,7 @@ module MenhirBasics = struct
         (Lexing.position)
 # 36 "sintatico.ml"
   )
-    | PUTS of (
+    | PRINT of (
 # 40 "sintatico.mly"
         (Lexing.position)
 # 41 "sintatico.ml"
@@ -304,7 +304,7 @@ module Tables = struct
           8
       | PONTOEV _ ->
           7
-      | PUTS _ ->
+      | PRINT _ ->
           6
       | RETURN _ ->
           5
@@ -393,7 +393,7 @@ module Tables = struct
           Obj.repr _v
       | PONTOEV _v ->
           Obj.repr _v
-      | PUTS _v ->
+      | PRINT _v ->
           Obj.repr _v
       | RETURN _v ->
           Obj.repr _v
@@ -1117,7 +1117,7 @@ module Tables = struct
         let _endpos = _endpos__3_ in
         let _v : (Sast.expressao Ast.comando) = 
 # 121 "sintatico.mly"
-                                           (CmdSaida cs)
+                                            (CmdSaida cs)
 # 1122 "sintatico.ml"
          in
         {

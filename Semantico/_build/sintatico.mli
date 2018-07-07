@@ -7,7 +7,7 @@ type token =
   | VIRGULA of (Lexing.position)
   | STRING of (Lexing.position)
   | RETURN of (Lexing.position)
-  | PUTS of (Lexing.position)
+  | PRINT of (Lexing.position)
   | PONTOEV of (Lexing.position)
   | OU of (Lexing.position)
   | NOT of (Lexing.position)

@@ -52,7 +52,7 @@ rule token = parse
    | "char" { CHAR (pos_atual lexbuf)}
    | "void" { VOID (pos_atual lexbuf)}
    | "gets" { GETS (pos_atual lexbuf)}
-   | "puts" { PUTS (pos_atual lexbuf)}
+   | "print" { PRINT (pos_atual lexbuf)}
    | '+' { MAIS (pos_atual lexbuf)}
    | '-' { MENOS (pos_atual lexbuf)}
    | '/' { DIVIDE (pos_atual lexbuf)}

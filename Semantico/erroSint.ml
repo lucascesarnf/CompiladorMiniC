@@ -53,9 +53,9 @@ let message =
    | 79 ->
    "Estado 79: Erro em return\n"
    | 81 ->
-   "Estado 81: Faltou ( no puts\n"
+   "Estado 81: Faltou ( no print\n"
    | 82 ->
-   "Estado 82: Faltou ) ou ( em puts\n"
+   "Estado 82: Faltou ) ou ( em print\n"
    | 92 ->
    "Estado 92: Erro em expressao\n"
    | 39 ->

@@ -40,7 +40,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR APAR LITSTRING ATRIB ID PONTO
 ##
 ## Ends in an error in state: 102.
 ##
-## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE 
@@ -52,7 +52,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR APAR LITSTRING ATRIB ID PONTO
 ##
 ## Ends in an error in state: 101.
 ##
-## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR 
@@ -89,7 +89,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR APAR LITSTRING ATRIB ID PONTO
 ##
 ## Ends in an error in state: 99.
 ##
-## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV . separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV . separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## FOR APAR comando_atribuicao PONTOEV expressao PONTOEV 
@@ -101,7 +101,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR APAR LITSTRING ATRIB ID PONTO
 ##
 ## Ends in an error in state: 98.
 ##
-## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao . PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR APAR comando_atribuicao PONTOEV expressao . PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -127,7 +127,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR APAR LITSTRING ATRIB ID PONTO
 ##
 ## Ends in an error in state: 97.
 ##
-## comando_it -> FOR APAR comando_atribuicao PONTOEV . expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR APAR comando_atribuicao PONTOEV . expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## FOR APAR comando_atribuicao PONTOEV 
@@ -139,7 +139,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR APAR LITSTRING ATRIB ID PONTO
 ##
 ## Ends in an error in state: 96.
 ##
-## comando_it -> FOR APAR comando_atribuicao . PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR APAR comando_atribuicao . PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## FOR APAR comando_atribuicao 
@@ -151,7 +151,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR APAR WHILE
 ##
 ## Ends in an error in state: 91.
 ##
-## comando_it -> FOR APAR . comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR APAR . comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## FOR APAR 
@@ -163,7 +163,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE FOR WHILE
 ##
 ## Ends in an error in state: 90.
 ##
-## comando_it -> FOR . APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> FOR . APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## FOR 
@@ -175,7 +175,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE GETS LITSTRING WHILE
 ##
 ## Ends in an error in state: 88.
 ##
-## comando_entrada -> GETS expressao . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_entrada -> GETS expressao . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -201,7 +201,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE GETS WHILE
 ##
 ## Ends in an error in state: 87.
 ##
-## comando_entrada -> GETS . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_entrada -> GETS . expressao PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## GETS 
@@ -213,7 +213,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE ID APAR FPAR VOID
 ##
 ## Ends in an error in state: 114.
 ##
-## comando_funcao -> chamada . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_funcao -> chamada . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ## expressao -> chamada . [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
 ##
 ## The known suffix of the stack is as follows:
@@ -265,7 +265,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE ID APAR WHILE
 ##
 ## Ends in an error in state: 35.
 ##
-## chamada -> ID APAR . loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PUTS PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
+## chamada -> ID APAR . loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
 ##
 ## The known suffix of the stack is as follows:
 ## ID APAR 
@@ -277,7 +277,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE ID WHILE
 ##
 ## Ends in an error in state: 34.
 ##
-## chamada -> ID . APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PUTS PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
+## chamada -> ID . APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
 ## variavel -> ID . [ VIRGULA PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR E DIVIDE DIFERENTE ATRIB ACHAVE ]
 ##
 ## The known suffix of the stack is as follows:
@@ -290,7 +290,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE IF LITSTRING ACHAVE RETURN PONTOE
 ##
 ## Ends in an error in state: 121.
 ##
-## option(__anonymous_0) -> ELSE ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## option(__anonymous_0) -> ELSE ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## ELSE ACHAVE 
@@ -302,7 +302,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE IF LITSTRING ACHAVE RETURN PONTOE
 ##
 ## Ends in an error in state: 120.
 ##
-## option(__anonymous_0) -> ELSE . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## option(__anonymous_0) -> ELSE . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## ELSE 
@@ -314,7 +314,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE IF LITSTRING ACHAVE RETURN PONTOE
 ##
 ## Ends in an error in state: 119.
 ##
-## comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE . option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE . option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## IF expressao ACHAVE nonempty_list(comando) FCHAVE 
@@ -326,7 +326,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE IF LITSTRING ACHAVE VOID
 ##
 ## Ends in an error in state: 86.
 ##
-## comando_se -> IF expressao ACHAVE . nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_se -> IF expressao ACHAVE . nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## IF expressao ACHAVE 
@@ -338,7 +338,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE IF LITSTRING WHILE
 ##
 ## Ends in an error in state: 85.
 ##
-## comando_se -> IF expressao . ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_se -> IF expressao . ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 ## expressao -> expressao . MENOS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 ## expressao -> expressao . MULTIPLICA expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
@@ -364,7 +364,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE IF WHILE
 ##
 ## Ends in an error in state: 84.
 ##
-## comando_se -> IF . expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_se -> IF . expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## IF 
@@ -376,7 +376,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE LITSTRING ATRIB LITSTRING WHILE
 ##
 ## Ends in an error in state: 94.
 ##
-## comando_atribuicao -> expressao ATRIB expressao . PONTOEV [ WHILE VIRGULA RETURN PUTS PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
+## comando_atribuicao -> expressao ATRIB expressao . PONTOEV [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -402,7 +402,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE LITSTRING ATRIB WHILE
 ##
 ## Ends in an error in state: 93.
 ##
-## comando_atribuicao -> expressao ATRIB . expressao PONTOEV [ WHILE VIRGULA RETURN PUTS PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
+## comando_atribuicao -> expressao ATRIB . expressao PONTOEV [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## expressao ATRIB 
@@ -920,7 +920,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE LITSTRING WHILE
 ##
 ## Ends in an error in state: 92.
 ##
-## comando_atribuicao -> expressao . ATRIB expressao PONTOEV [ WHILE VIRGULA RETURN PUTS PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
+## comando_atribuicao -> expressao . ATRIB expressao PONTOEV [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
 ## expressao -> expressao . MENOS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
 ## expressao -> expressao . MULTIPLICA expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
@@ -942,11 +942,11 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE LITSTRING WHILE
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
-programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE PUTS LITSTRING WHILE 
+programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE PRINTSCAN LITSTRING WHILE 
 ##
 ## Ends in an error in state: 82.
 ##
-## comando_saida -> PUTS expressao . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_saida -> PRINTSCAN expressao . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -963,19 +963,19 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE PUTS LITSTRING WHILE
 ## expressao -> expressao . MOD expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ##
 ## The known suffix of the stack is as follows:
-## PUTS expressao 
+## PRINTSCAN expressao 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
-programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE PUTS WHILE 
+programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE PRINTSCAN WHILE 
 ##
 ## Ends in an error in state: 81.
 ##
-## comando_saida -> PUTS . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_saida -> PRINTSCAN . expressao PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
-## PUTS 
+## PRINTSCAN 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -984,7 +984,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE RETURN LITSTRING WHILE
 ##
 ## Ends in an error in state: 79.
 ##
-## comando_retorno -> RETURN expressao . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_retorno -> RETURN expressao . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 ## expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -1022,8 +1022,8 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE RETURN WHILE
 ##
 ## Ends in an error in state: 77.
 ##
-## comando_retorno -> RETURN . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
-## comando_retorno -> RETURN . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_retorno -> RETURN . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_retorno -> RETURN . expressao PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## RETURN 
@@ -1047,7 +1047,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE VOID ID PONTOEV VIRGULA
 ##
 ## Ends in an error in state: 131.
 ##
-## list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## declaracao 
@@ -1059,7 +1059,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE VOID WHILE
 ##
 ## Ends in an error in state: 25.
 ##
-## declaracao -> tipo . separated_nonempty_list(VIRGULA,ID) PONTOEV [ WHILE VOID RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
+## declaracao -> tipo . separated_nonempty_list(VIRGULA,ID) PONTOEV [ WHILE VOID RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## tipo 
@@ -1084,7 +1084,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE WHILE LITSTRING ACHAVE VOID
 ##
 ## Ends in an error in state: 76.
 ##
-## comando_it -> WHILE expressao ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> WHILE expressao ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## WHILE expressao ACHAVE 
@@ -1096,7 +1096,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE WHILE LITSTRING WHILE
 ##
 ## Ends in an error in state: 75.
 ##
-## comando_it -> WHILE expressao . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> WHILE expressao . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ## expressao -> expressao . MAIS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 ## expressao -> expressao . MENOS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 ## expressao -> expressao . MULTIPLICA expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
@@ -1122,7 +1122,7 @@ programa: INCLUDE LIB VOID ID APAR FPAR ACHAVE WHILE WHILE
 ##
 ## Ends in an error in state: 29.
 ##
-## comando_it -> WHILE . expressao ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+## comando_it -> WHILE . expressao ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 ##
 ## The known suffix of the stack is as follows:
 ## WHILE 

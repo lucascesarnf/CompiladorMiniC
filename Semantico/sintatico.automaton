@@ -150,7 +150,7 @@ funcao -> tipo ID APAR loption(separated_nonempty_list(VIRGULA,parametro)) FPAR 
 -- On declaracao shift to state 131
 -- On WHILE reduce production list(declaracao) -> 
 -- On RETURN reduce production list(declaracao) -> 
--- On PUTS reduce production list(declaracao) -> 
+-- On PRINTSCAN reduce production list(declaracao) -> 
 -- On LITSTRING reduce production list(declaracao) -> 
 -- On LITINT reduce production list(declaracao) -> 
 -- On LITFLOAT reduce production list(declaracao) -> 
@@ -163,20 +163,20 @@ funcao -> tipo ID APAR loption(separated_nonempty_list(VIRGULA,parametro)) FPAR 
 -- On APAR reduce production list(declaracao) -> 
 
 State 25:
-declaracao -> tipo . separated_nonempty_list(VIRGULA,ID) PONTOEV [ WHILE VOID RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
+declaracao -> tipo . separated_nonempty_list(VIRGULA,ID) PONTOEV [ WHILE VOID RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
 -- On ID shift to state 13
 -- On separated_nonempty_list(VIRGULA,ID) shift to state 26
 
 State 26:
-declaracao -> tipo separated_nonempty_list(VIRGULA,ID) . PONTOEV [ WHILE VOID RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
+declaracao -> tipo separated_nonempty_list(VIRGULA,ID) . PONTOEV [ WHILE VOID RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
 -- On PONTOEV shift to state 27
 
 State 27:
-declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV . [ WHILE VOID RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
+declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV . [ WHILE VOID RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR INTEIRO IF ID GETS FOR FLOAT FCHAVE CHAR APAR ]
 -- On WHILE reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
 -- On VOID reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
 -- On RETURN reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
--- On PUTS reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
+-- On PRINTSCAN reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
 -- On LITSTRING reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
 -- On LITINT reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
 -- On LITFLOAT reduce production declaracao -> tipo separated_nonempty_list(VIRGULA,ID) PONTOEV 
@@ -195,7 +195,7 @@ State 28:
 funcao -> tipo ID APAR loption(separated_nonempty_list(VIRGULA,parametro)) FPAR ACHAVE list(declaracao) . list(comando) FCHAVE [ VOID INTEIRO FLOAT EOF CHAR ]
 -- On WHILE shift to state 29
 -- On RETURN shift to state 77
--- On PUTS shift to state 81
+-- On PRINTSCAN shift to state 81
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -220,7 +220,7 @@ funcao -> tipo ID APAR loption(separated_nonempty_list(VIRGULA,parametro)) FPAR 
 -- On FCHAVE reduce production list(comando) -> 
 
 State 29:
-comando_it -> WHILE . expressao ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> WHILE . expressao ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -320,7 +320,7 @@ expressao -> LITCHAR . [ VIRGULA PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL 
 -- On ACHAVE reduce production expressao -> LITCHAR 
 
 State 34:
-chamada -> ID . APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PUTS PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
+chamada -> ID . APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
 variavel -> ID . [ VIRGULA PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR E DIVIDE DIFERENTE ATRIB ACHAVE ]
 -- On APAR shift to state 35
 -- On VIRGULA reduce production variavel -> ID 
@@ -344,7 +344,7 @@ variavel -> ID . [ VIRGULA PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR 
 -- On ACHAVE reduce production variavel -> ID 
 
 State 35:
-chamada -> ID APAR . loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PUTS PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
+chamada -> ID APAR . loption(separated_nonempty_list(VIRGULA,expressao)) FPAR [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1145,15 +1145,15 @@ loption(separated_nonempty_list(VIRGULA,expressao)) -> separated_nonempty_list(V
 -- On FPAR reduce production loption(separated_nonempty_list(VIRGULA,expressao)) -> separated_nonempty_list(VIRGULA,expressao) 
 
 State 70:
-chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) . FPAR [ WHILE VIRGULA RETURN PUTS PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
+chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) . FPAR [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
 -- On FPAR shift to state 71
 
 State 71:
-chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR . [ WHILE VIRGULA RETURN PUTS PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
+chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR . [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT LITCHAR IGUAL IF ID GETS FPAR FOR FCHAVE E DIVIDE DIFERENTE ATRIB APAR ACHAVE ]
 -- On WHILE reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
 -- On VIRGULA reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
 -- On RETURN reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
--- On PUTS reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
+-- On PRINTSCAN reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
 -- On PONTOEV reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
 -- On OU reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
 -- On NOT reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRGULA,expressao)) FPAR 
@@ -1235,7 +1235,7 @@ separated_nonempty_list(VIRGULA,expressao) -> expressao VIRGULA separated_nonemp
 -- On FPAR reduce production separated_nonempty_list(VIRGULA,expressao) -> expressao VIRGULA separated_nonempty_list(VIRGULA,expressao) 
 
 State 75:
-comando_it -> WHILE expressao . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> WHILE expressao . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 expressao -> expressao . MENOS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 expressao -> expressao . MULTIPLICA expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
@@ -1267,10 +1267,10 @@ expressao -> expressao . MOD expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL 
 -- On ACHAVE shift to state 76
 
 State 76:
-comando_it -> WHILE expressao ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> WHILE expressao ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE shift to state 29
 -- On RETURN shift to state 77
--- On PUTS shift to state 81
+-- On PRINTSCAN shift to state 81
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1294,8 +1294,8 @@ comando_it -> WHILE expressao ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RET
 -- On chamada shift to state 114
 
 State 77:
-comando_retorno -> RETURN . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
-comando_retorno -> RETURN . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_retorno -> RETURN . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_retorno -> RETURN . expressao PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On PONTOEV shift to state 78
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
@@ -1308,10 +1308,10 @@ comando_retorno -> RETURN . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITI
 -- On chamada shift to state 43
 
 State 78:
-comando_retorno -> RETURN PONTOEV . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_retorno -> RETURN PONTOEV . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando_retorno -> RETURN PONTOEV 
 -- On RETURN reduce production comando_retorno -> RETURN PONTOEV 
--- On PUTS reduce production comando_retorno -> RETURN PONTOEV 
+-- On PRINTSCAN reduce production comando_retorno -> RETURN PONTOEV 
 -- On LITSTRING reduce production comando_retorno -> RETURN PONTOEV 
 -- On LITINT reduce production comando_retorno -> RETURN PONTOEV 
 -- On LITFLOAT reduce production comando_retorno -> RETURN PONTOEV 
@@ -1324,7 +1324,7 @@ comando_retorno -> RETURN PONTOEV . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOA
 -- On APAR reduce production comando_retorno -> RETURN PONTOEV 
 
 State 79:
-comando_retorno -> RETURN expressao . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_retorno -> RETURN expressao . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -1356,10 +1356,10 @@ expressao -> expressao . MOD expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MEN
 -- On DIFERENTE shift to state 66
 
 State 80:
-comando_retorno -> RETURN expressao PONTOEV . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_retorno -> RETURN expressao PONTOEV . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando_retorno -> RETURN expressao PONTOEV 
 -- On RETURN reduce production comando_retorno -> RETURN expressao PONTOEV 
--- On PUTS reduce production comando_retorno -> RETURN expressao PONTOEV 
+-- On PRINTSCAN reduce production comando_retorno -> RETURN expressao PONTOEV 
 -- On LITSTRING reduce production comando_retorno -> RETURN expressao PONTOEV 
 -- On LITINT reduce production comando_retorno -> RETURN expressao PONTOEV 
 -- On LITFLOAT reduce production comando_retorno -> RETURN expressao PONTOEV 
@@ -1372,7 +1372,7 @@ comando_retorno -> RETURN expressao PONTOEV . [ WHILE RETURN PUTS LITSTRING LITI
 -- On APAR reduce production comando_retorno -> RETURN expressao PONTOEV 
 
 State 81:
-comando_saida -> PUTS . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_saida -> PRINTSCAN . expressao PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1384,7 +1384,7 @@ comando_saida -> PUTS . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT L
 -- On chamada shift to state 43
 
 State 82:
-comando_saida -> PUTS expressao . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_saida -> PRINTSCAN expressao . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -1416,23 +1416,23 @@ expressao -> expressao . MOD expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MEN
 -- On DIFERENTE shift to state 66
 
 State 83:
-comando_saida -> PUTS expressao PONTOEV . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
--- On WHILE reduce production comando_saida -> PUTS expressao PONTOEV 
--- On RETURN reduce production comando_saida -> PUTS expressao PONTOEV 
--- On PUTS reduce production comando_saida -> PUTS expressao PONTOEV 
--- On LITSTRING reduce production comando_saida -> PUTS expressao PONTOEV 
--- On LITINT reduce production comando_saida -> PUTS expressao PONTOEV 
--- On LITFLOAT reduce production comando_saida -> PUTS expressao PONTOEV 
--- On LITCHAR reduce production comando_saida -> PUTS expressao PONTOEV 
--- On IF reduce production comando_saida -> PUTS expressao PONTOEV 
--- On ID reduce production comando_saida -> PUTS expressao PONTOEV 
--- On GETS reduce production comando_saida -> PUTS expressao PONTOEV 
--- On FOR reduce production comando_saida -> PUTS expressao PONTOEV 
--- On FCHAVE reduce production comando_saida -> PUTS expressao PONTOEV 
--- On APAR reduce production comando_saida -> PUTS expressao PONTOEV 
+comando_saida -> PRINTSCAN expressao PONTOEV . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+-- On WHILE reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On RETURN reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On PRINTSCAN reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On LITSTRING reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On LITINT reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On LITFLOAT reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On LITCHAR reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On IF reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On ID reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On GETS reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On FOR reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On FCHAVE reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
+-- On APAR reduce production comando_saida -> PRINTSCAN expressao PONTOEV 
 
 State 84:
-comando_se -> IF . expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_se -> IF . expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1444,7 +1444,7 @@ comando_se -> IF . expressao ACHAVE nonempty_list(comando) FCHAVE option(__anony
 -- On chamada shift to state 43
 
 State 85:
-comando_se -> IF expressao . ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_se -> IF expressao . ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 expressao -> expressao . MENOS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
 expressao -> expressao . MULTIPLICA expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ACHAVE ]
@@ -1476,10 +1476,10 @@ expressao -> expressao . MOD expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL 
 -- On ACHAVE shift to state 86
 
 State 86:
-comando_se -> IF expressao ACHAVE . nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_se -> IF expressao ACHAVE . nonempty_list(comando) FCHAVE option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE shift to state 29
 -- On RETURN shift to state 77
--- On PUTS shift to state 81
+-- On PRINTSCAN shift to state 81
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1503,7 +1503,7 @@ comando_se -> IF expressao ACHAVE . nonempty_list(comando) FCHAVE option(__anony
 -- On chamada shift to state 114
 
 State 87:
-comando_entrada -> GETS . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_entrada -> GETS . expressao PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1515,7 +1515,7 @@ comando_entrada -> GETS . expressao PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT
 -- On chamada shift to state 43
 
 State 88:
-comando_entrada -> GETS expressao . PONTOEV [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_entrada -> GETS expressao . PONTOEV [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -1547,10 +1547,10 @@ expressao -> expressao . MOD expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MEN
 -- On DIFERENTE shift to state 66
 
 State 89:
-comando_entrada -> GETS expressao PONTOEV . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_entrada -> GETS expressao PONTOEV . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando_entrada -> GETS expressao PONTOEV 
 -- On RETURN reduce production comando_entrada -> GETS expressao PONTOEV 
--- On PUTS reduce production comando_entrada -> GETS expressao PONTOEV 
+-- On PRINTSCAN reduce production comando_entrada -> GETS expressao PONTOEV 
 -- On LITSTRING reduce production comando_entrada -> GETS expressao PONTOEV 
 -- On LITINT reduce production comando_entrada -> GETS expressao PONTOEV 
 -- On LITFLOAT reduce production comando_entrada -> GETS expressao PONTOEV 
@@ -1563,11 +1563,11 @@ comando_entrada -> GETS expressao PONTOEV . [ WHILE RETURN PUTS LITSTRING LITINT
 -- On APAR reduce production comando_entrada -> GETS expressao PONTOEV 
 
 State 90:
-comando_it -> FOR . APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR . APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On APAR shift to state 91
 
 State 91:
-comando_it -> FOR APAR . comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR . comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1580,7 +1580,7 @@ comando_it -> FOR APAR . comando_atribuicao PONTOEV expressao PONTOEV separated_
 -- On chamada shift to state 43
 
 State 92:
-comando_atribuicao -> expressao . ATRIB expressao PONTOEV [ WHILE VIRGULA RETURN PUTS PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
+comando_atribuicao -> expressao . ATRIB expressao PONTOEV [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
 expressao -> expressao . MENOS expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
 expressao -> expressao . MULTIPLICA expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
@@ -1612,7 +1612,7 @@ expressao -> expressao . MOD expressao [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL 
 -- On ATRIB shift to state 93
 
 State 93:
-comando_atribuicao -> expressao ATRIB . expressao PONTOEV [ WHILE VIRGULA RETURN PUTS PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
+comando_atribuicao -> expressao ATRIB . expressao PONTOEV [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1624,7 +1624,7 @@ comando_atribuicao -> expressao ATRIB . expressao PONTOEV [ WHILE VIRGULA RETURN
 -- On chamada shift to state 43
 
 State 94:
-comando_atribuicao -> expressao ATRIB expressao . PONTOEV [ WHILE VIRGULA RETURN PUTS PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
+comando_atribuicao -> expressao ATRIB expressao . PONTOEV [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -1656,11 +1656,11 @@ expressao -> expressao . MOD expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MEN
 -- On DIFERENTE shift to state 66
 
 State 95:
-comando_atribuicao -> expressao ATRIB expressao PONTOEV . [ WHILE VIRGULA RETURN PUTS PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
+comando_atribuicao -> expressao ATRIB expressao PONTOEV . [ WHILE VIRGULA RETURN PRINTSCAN PONTOEV LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FPAR FOR FCHAVE APAR ]
 -- On WHILE reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
 -- On VIRGULA reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
 -- On RETURN reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
--- On PUTS reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
+-- On PRINTSCAN reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
 -- On PONTOEV reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
 -- On LITSTRING reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
 -- On LITINT reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
@@ -1675,11 +1675,11 @@ comando_atribuicao -> expressao ATRIB expressao PONTOEV . [ WHILE VIRGULA RETURN
 -- On APAR reduce production comando_atribuicao -> expressao ATRIB expressao PONTOEV 
 
 State 96:
-comando_it -> FOR APAR comando_atribuicao . PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao . PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On PONTOEV shift to state 97
 
 State 97:
-comando_it -> FOR APAR comando_atribuicao PONTOEV . expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV . expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1691,7 +1691,7 @@ comando_it -> FOR APAR comando_atribuicao PONTOEV . expressao PONTOEV separated_
 -- On chamada shift to state 43
 
 State 98:
-comando_it -> FOR APAR comando_atribuicao PONTOEV expressao . PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV expressao . PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 expressao -> expressao . MAIS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MENOS expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
 expressao -> expressao . MULTIPLICA expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ]
@@ -1723,7 +1723,7 @@ expressao -> expressao . MOD expressao [ PONTOEV OU NOT MULTIPLICA MOD MENOS MEN
 -- On DIFERENTE shift to state 66
 
 State 99:
-comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV . separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV . separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1737,18 +1737,18 @@ comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV . separated_
 -- On chamada shift to state 43
 
 State 100:
-comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) . FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) . FPAR ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On FPAR shift to state 101
 
 State 101:
-comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On ACHAVE shift to state 102
 
 State 102:
-comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE shift to state 29
 -- On RETURN shift to state 77
--- On PUTS shift to state 81
+-- On PRINTSCAN shift to state 81
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1772,14 +1772,14 @@ comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_no
 -- On chamada shift to state 114
 
 State 103:
-comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) . FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) . FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On FCHAVE shift to state 104
 
 State 104:
-comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
 -- On RETURN reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
--- On PUTS reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
+-- On PRINTSCAN reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITSTRING reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITINT reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITFLOAT reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
@@ -1792,10 +1792,10 @@ comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_no
 -- On APAR reduce production comando_it -> FOR APAR comando_atribuicao PONTOEV expressao PONTOEV separated_nonempty_list(VIRGULA,__anonymous_1) FPAR ACHAVE nonempty_list(comando) FCHAVE 
 
 State 105:
-comando -> comando_se . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando -> comando_se . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando -> comando_se 
 -- On RETURN reduce production comando -> comando_se 
--- On PUTS reduce production comando -> comando_se 
+-- On PRINTSCAN reduce production comando -> comando_se 
 -- On LITSTRING reduce production comando -> comando_se 
 -- On LITINT reduce production comando -> comando_se 
 -- On LITFLOAT reduce production comando -> comando_se 
@@ -1808,10 +1808,10 @@ comando -> comando_se . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF
 -- On APAR reduce production comando -> comando_se 
 
 State 106:
-comando -> comando_saida . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando -> comando_saida . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando -> comando_saida 
 -- On RETURN reduce production comando -> comando_saida 
--- On PUTS reduce production comando -> comando_saida 
+-- On PRINTSCAN reduce production comando -> comando_saida 
 -- On LITSTRING reduce production comando -> comando_saida 
 -- On LITINT reduce production comando -> comando_saida 
 -- On LITFLOAT reduce production comando -> comando_saida 
@@ -1824,10 +1824,10 @@ comando -> comando_saida . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR
 -- On APAR reduce production comando -> comando_saida 
 
 State 107:
-comando -> comando_retorno . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando -> comando_retorno . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando -> comando_retorno 
 -- On RETURN reduce production comando -> comando_retorno 
--- On PUTS reduce production comando -> comando_retorno 
+-- On PRINTSCAN reduce production comando -> comando_retorno 
 -- On LITSTRING reduce production comando -> comando_retorno 
 -- On LITINT reduce production comando -> comando_retorno 
 -- On LITFLOAT reduce production comando -> comando_retorno 
@@ -1840,10 +1840,10 @@ comando -> comando_retorno . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCH
 -- On APAR reduce production comando -> comando_retorno 
 
 State 108:
-comando -> comando_it . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando -> comando_it . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando -> comando_it 
 -- On RETURN reduce production comando -> comando_it 
--- On PUTS reduce production comando -> comando_it 
+-- On PRINTSCAN reduce production comando -> comando_it 
 -- On LITSTRING reduce production comando -> comando_it 
 -- On LITINT reduce production comando -> comando_it 
 -- On LITFLOAT reduce production comando -> comando_it 
@@ -1856,10 +1856,10 @@ comando -> comando_it . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF
 -- On APAR reduce production comando -> comando_it 
 
 State 109:
-comando -> comando_funcao . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando -> comando_funcao . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando -> comando_funcao 
 -- On RETURN reduce production comando -> comando_funcao 
--- On PUTS reduce production comando -> comando_funcao 
+-- On PRINTSCAN reduce production comando -> comando_funcao 
 -- On LITSTRING reduce production comando -> comando_funcao 
 -- On LITINT reduce production comando -> comando_funcao 
 -- On LITFLOAT reduce production comando -> comando_funcao 
@@ -1872,10 +1872,10 @@ comando -> comando_funcao . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHA
 -- On APAR reduce production comando -> comando_funcao 
 
 State 110:
-comando -> comando_entrada . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando -> comando_entrada . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando -> comando_entrada 
 -- On RETURN reduce production comando -> comando_entrada 
--- On PUTS reduce production comando -> comando_entrada 
+-- On PRINTSCAN reduce production comando -> comando_entrada 
 -- On LITSTRING reduce production comando -> comando_entrada 
 -- On LITINT reduce production comando -> comando_entrada 
 -- On LITFLOAT reduce production comando -> comando_entrada 
@@ -1888,10 +1888,10 @@ comando -> comando_entrada . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCH
 -- On APAR reduce production comando -> comando_entrada 
 
 State 111:
-comando -> comando_atribuicao . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando -> comando_atribuicao . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando -> comando_atribuicao 
 -- On RETURN reduce production comando -> comando_atribuicao 
--- On PUTS reduce production comando -> comando_atribuicao 
+-- On PRINTSCAN reduce production comando -> comando_atribuicao 
 -- On LITSTRING reduce production comando -> comando_atribuicao 
 -- On LITINT reduce production comando -> comando_atribuicao 
 -- On LITFLOAT reduce production comando -> comando_atribuicao 
@@ -1908,7 +1908,7 @@ nonempty_list(comando) -> comando . [ FCHAVE ]
 nonempty_list(comando) -> comando . nonempty_list(comando) [ FCHAVE ]
 -- On WHILE shift to state 29
 -- On RETURN shift to state 77
--- On PUTS shift to state 81
+-- On PRINTSCAN shift to state 81
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -1937,11 +1937,11 @@ nonempty_list(comando) -> comando nonempty_list(comando) . [ FCHAVE ]
 -- On FCHAVE reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
 
 State 114:
-comando_funcao -> chamada . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_funcao -> chamada . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 expressao -> chamada . [ OU NOT MULTIPLICA MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL E DIVIDE DIFERENTE ATRIB ]
 -- On WHILE reduce production comando_funcao -> chamada 
 -- On RETURN reduce production comando_funcao -> chamada 
--- On PUTS reduce production comando_funcao -> chamada 
+-- On PRINTSCAN reduce production comando_funcao -> chamada 
 -- On OU reduce production expressao -> chamada 
 -- On NOT reduce production expressao -> chamada 
 -- On MULTIPLICA reduce production expressao -> chamada 
@@ -1993,16 +1993,16 @@ separated_nonempty_list(VIRGULA,__anonymous_1) -> comando_atribuicao VIRGULA sep
 -- On FPAR reduce production separated_nonempty_list(VIRGULA,__anonymous_1) -> comando_atribuicao VIRGULA separated_nonempty_list(VIRGULA,__anonymous_1) 
 
 State 118:
-comando_se -> IF expressao ACHAVE nonempty_list(comando) . FCHAVE option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_se -> IF expressao ACHAVE nonempty_list(comando) . FCHAVE option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On FCHAVE shift to state 119
 
 State 119:
-comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE . option(__anonymous_0) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE . option(__anonymous_0) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On ELSE shift to state 120
 -- On option(__anonymous_0) shift to state 124
 -- On WHILE reduce production option(__anonymous_0) -> 
 -- On RETURN reduce production option(__anonymous_0) -> 
--- On PUTS reduce production option(__anonymous_0) -> 
+-- On PRINTSCAN reduce production option(__anonymous_0) -> 
 -- On LITSTRING reduce production option(__anonymous_0) -> 
 -- On LITINT reduce production option(__anonymous_0) -> 
 -- On LITFLOAT reduce production option(__anonymous_0) -> 
@@ -2015,14 +2015,14 @@ comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE . option(__anony
 -- On APAR reduce production option(__anonymous_0) -> 
 
 State 120:
-option(__anonymous_0) -> ELSE . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+option(__anonymous_0) -> ELSE . ACHAVE nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On ACHAVE shift to state 121
 
 State 121:
-option(__anonymous_0) -> ELSE ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+option(__anonymous_0) -> ELSE ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE shift to state 29
 -- On RETURN shift to state 77
--- On PUTS shift to state 81
+-- On PRINTSCAN shift to state 81
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -2046,14 +2046,14 @@ option(__anonymous_0) -> ELSE ACHAVE . nonempty_list(comando) FCHAVE [ WHILE RET
 -- On chamada shift to state 114
 
 State 122:
-option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) . FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) . FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On FCHAVE shift to state 123
 
 State 123:
-option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
 -- On RETURN reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
--- On PUTS reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
+-- On PRINTSCAN reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITSTRING reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITINT reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITFLOAT reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
@@ -2066,10 +2066,10 @@ option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE . [ WHILE RET
 -- On APAR reduce production option(__anonymous_0) -> ELSE ACHAVE nonempty_list(comando) FCHAVE 
 
 State 124:
-comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
 -- On RETURN reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
--- On PUTS reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
+-- On PRINTSCAN reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
 -- On LITSTRING reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
 -- On LITINT reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
 -- On LITFLOAT reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
@@ -2082,14 +2082,14 @@ comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymo
 -- On APAR reduce production comando_se -> IF expressao ACHAVE nonempty_list(comando) FCHAVE option(__anonymous_0) 
 
 State 125:
-comando_it -> WHILE expressao ACHAVE nonempty_list(comando) . FCHAVE [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> WHILE expressao ACHAVE nonempty_list(comando) . FCHAVE [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On FCHAVE shift to state 126
 
 State 126:
-comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE 
 -- On RETURN reduce production comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE 
--- On PUTS reduce production comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE 
+-- On PRINTSCAN reduce production comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITSTRING reduce production comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITINT reduce production comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE 
 -- On LITFLOAT reduce production comando_it -> WHILE expressao ACHAVE nonempty_list(comando) FCHAVE 
@@ -2117,7 +2117,7 @@ State 129:
 list(comando) -> comando . list(comando) [ FCHAVE ]
 -- On WHILE shift to state 29
 -- On RETURN shift to state 77
--- On PUTS shift to state 81
+-- On PRINTSCAN shift to state 81
 -- On LITSTRING shift to state 30
 -- On LITINT shift to state 31
 -- On LITFLOAT shift to state 32
@@ -2146,7 +2146,7 @@ list(comando) -> comando list(comando) . [ FCHAVE ]
 -- On FCHAVE reduce production list(comando) -> comando list(comando) 
 
 State 131:
-list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On VOID shift to state 5
 -- On INTEIRO shift to state 6
 -- On FLOAT shift to state 7
@@ -2157,7 +2157,7 @@ list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PUTS LITSTRING 
 -- On declaracao shift to state 131
 -- On WHILE reduce production list(declaracao) -> 
 -- On RETURN reduce production list(declaracao) -> 
--- On PUTS reduce production list(declaracao) -> 
+-- On PRINTSCAN reduce production list(declaracao) -> 
 -- On LITSTRING reduce production list(declaracao) -> 
 -- On LITINT reduce production list(declaracao) -> 
 -- On LITFLOAT reduce production list(declaracao) -> 
@@ -2170,10 +2170,10 @@ list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PUTS LITSTRING 
 -- On APAR reduce production list(declaracao) -> 
 
 State 132:
-list(declaracao) -> declaracao list(declaracao) . [ WHILE RETURN PUTS LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
+list(declaracao) -> declaracao list(declaracao) . [ WHILE RETURN PRINTSCAN LITSTRING LITINT LITFLOAT LITCHAR IF ID GETS FOR FCHAVE APAR ]
 -- On WHILE reduce production list(declaracao) -> declaracao list(declaracao) 
 -- On RETURN reduce production list(declaracao) -> declaracao list(declaracao) 
--- On PUTS reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On PRINTSCAN reduce production list(declaracao) -> declaracao list(declaracao) 
 -- On LITSTRING reduce production list(declaracao) -> declaracao list(declaracao) 
 -- On LITINT reduce production list(declaracao) -> declaracao list(declaracao) 
 -- On LITFLOAT reduce production list(declaracao) -> declaracao list(declaracao) 
